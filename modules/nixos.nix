@@ -9,7 +9,10 @@
     formatter = pkgs.alejandra;
     # Everything ./dev needs.
     devShells.default = pkgs.mkShell {
-      packages = [pkgs.python3 pkgs.wget];
+      packages = [
+        (pkgs.python3.withPackages (ps: [ps.pillow]))
+        pkgs.wget
+      ];
     };
   };
 }

@@ -21,12 +21,22 @@ class Refs(html.parser.HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.refs = []
+        self.template_depth = 0
+
+    def handle_endtag(self, tag):
+        if tag == "template":
+            self.template_depth -= 1
 
     def handle_starttag(self, tag, attrs):
+        # <template> content is not rendered, like the offline blog.
+        if tag == "template":
+            self.template_depth += 1
+        if self.template_depth:
+            return
         for key, value in attrs:
             if not value:
                 continue
-            if key in ("href", "src", "action", "poster", "data-src"):
+            if key in ("href", "src", "poster", "data-src"):
                 self.refs.append(value)
             elif key == "srcset":
                 self.refs += [p.split()[0] for p in value.split(",") if p.strip()]
@@ -36,6 +46,8 @@ class Refs(html.parser.HTMLParser):
                 self.refs += ABSOLUTE.findall(value)
 
     def handle_data(self, data):
+        if self.template_depth:
+            return
         # Inline CSS and JSON-LD.
         self.refs += CSS_URL.findall(data)
         self.refs += ABSOLUTE.findall(data)

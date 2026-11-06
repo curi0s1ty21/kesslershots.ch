@@ -4,11 +4,12 @@ This repo is the website kesslershots.ch (`site/`), its developer tools (`./dev`
 
 ## Website
 
-- `site/` is the document root. Paths are case-sensitive, and many contain spaces or umlauts.
-- `./dev serve` serves it on http://localhost:7979. `./dev links` lists references that lead nowhere.
-- `./dev mirror` replaces `site/` with the live site and discards local edits.
-- `./dev compare` reports a difference for every file changed since the clone. That is expected once site edits begin.
-- Test submissions of the contact form send real email to the site owner.
+- `site/` is the document root. Paths are case-sensitive.
+- `./dev serve` serves it and the contact form on http://localhost:7979. `./dev links` lists references that lead nowhere.
+- New images: add a plain `<img>`, then run `./dev images`. `sizes_for` in `scripts/optimize_images.py` must match the layout.
+- `server/contact_server.py` receives the contact form. It saves first, then notifies Telegram. It uses only the standard library, and its log must not contain form contents or the bot token.
+- The blog is offline: `offline/blog/` and `<template data-offline="blog">`. Do not add links to it. See README.md.
+- `./dev mirror` replaces `site/` with the old live site and discards every change. `./dev compare` is only useful against that old site.
 
 ## Before you change the plugin
 
@@ -28,15 +29,16 @@ This repo is the website kesslershots.ch (`site/`), its developer tools (`./dev`
 | `flake.nix` | Generated. Do not edit; change `modules/inputs.nix` and run `nix run .#write-flake` |
 | `modules/imports.nix` | Imports `inputs.neo.flakeModules.plugin` |
 | `modules/services/kesslershots/option.nix` | Options under `neo.services.<name>`: what the operator sets in the web UI |
-| `modules/services/kesslershots/default.nix` | What runs: the host nginx on loopback, serving `site/` from the Nix store |
+| `modules/services/kesslershots/default.nix` | What runs: the host nginx on loopback serving `site/` from the Nix store, and the contact form unit |
 | `modules/services/kesslershots/swag.nix` | HTTPS vhost via `lib.neo.mkSubdomainProxyConf` |
 | `modules/services/kesslershots/skills.nix` | Skill for Neo's assistant via `lib.neo.mkServiceSkill` |
 
 ## Rules
 
 - Every file under `modules/` is auto-imported. Never `imports = [ ./sibling.nix ]`. `git add` new files: flakes ignore untracked ones, including anything new in `site/`.
-- `name = plugin.name "kesslershots"` for every service key, vhost and subdomain. Titles get `${plugin.label}`.
+- `name = plugin.name "kesslershots"` for every service key, vhost, unit, appdata dir, secret template and subdomain. Titles get `${plugin.label}`.
 - The site is public: keep `auth.enabled = false`.
+- The bot token is a secret: only `neo.core.secrets.templates`, never `environment`.
 - Texts are for non-technical operators: `tagline`/`description` say what they get, technical facts go in `notes` or Nix comments.
 - Options are API: operators have them in `settings.toml`. Add, do not rename.
 

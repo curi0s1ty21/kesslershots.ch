@@ -8,6 +8,9 @@ case "${1:-help}" in
     shift
     exec python3 scripts/serve.py "$@"
     ;;
+  images)
+    exec python3 scripts/optimize_images.py
+    ;;
   links)
     exec python3 scripts/check_links.py
     ;;
@@ -30,9 +33,10 @@ case "${1:-help}" in
 Usage: ./dev <command>
 
   serve [--port N]  Serve site/ on http://localhost:7979
+  images            Create image sizes for new images in site/ and use them (needs Pillow)
   links             List links and images in site/ that lead nowhere
-  compare           Compare site/ with the live site, byte for byte
-  mirror            Replace site/ with a fresh download of the live site
+  compare           List files in site/ that differ from the old live site
+  mirror            Replace site/ with the old live site, discarding every change
   plugin-check      Format the Nix files and run the Neo plugin checks (needs Nix)
 EOF
     ;;

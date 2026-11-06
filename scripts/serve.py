@@ -1,20 +1,43 @@
 #!/usr/bin/env python3
-"""Serve site/ locally, behaving like the production nginx.
+"""Serve site/ locally, behaving like production.
 
 Paths are case-sensitive, a directory without index.html answers 403 instead of
 a file listing, and nothing is cached, so an edit shows on the next reload.
+
+The contact form works too. Messages are saved in .data/contact/ and go to Telegram
+only if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are set in the environment.
 """
 
 import argparse
 import http.server
+import os
 import pathlib
+import sys
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent / "site"
+PROJECT = pathlib.Path(__file__).resolve().parent.parent
+ROOT = PROJECT / "site"
+sys.path.insert(0, str(PROJECT / "server"))
+sys.dont_write_bytecode = True
+
+import contact_server  # noqa: E402
+
+FORM = contact_server.ContactForm(
+    PROJECT / ".data" / "contact",
+    os.environ.get("TELEGRAM_BOT_TOKEN", ""),
+    os.environ.get("TELEGRAM_CHAT_ID", ""),
+    os.environ.get("TELEGRAM_API_BASE"),
+)
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
+
+    def do_POST(self):
+        if self.path == contact_server.PATH:
+            contact_server.handle_post(self, FORM)
+        else:
+            self.send_error(404)
 
     def list_directory(self, path):
         self.send_error(403, "Directory listing is disabled")

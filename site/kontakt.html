@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kontakt | Kesslershots – Hochzeitsfotografie Ostschweiz</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="/assets/vendor/tailwind-2.2.19.min.css" rel="stylesheet">
+  <link href="/assets/site.css" rel="stylesheet">
   <meta name="description" content="Kontakt zu Kesslershots: Hochzeitsfotografie in St. Gallen, Rheintal, Appenzell & Ostschweiz. Strenglenstrasse 3, 9424 Rheineck. Jetzt Termin anfragen!" />
   <link rel="icon" type="image/png" href="/Logo.jpg" sizes="32x32">
   <style>
@@ -24,6 +24,12 @@
         url.searchParams.delete('sent');
         window.history.replaceState({}, '', url);
       }
+      if (p.get('error') === '1') {
+        alert('Eure Anfrage konnte leider nicht gesendet werden. Bitte versucht es später nochmals oder meldet euch per Telefon oder WhatsApp: +41 79 751 17 54.');
+        const url = new URL(window.location);
+        url.searchParams.delete('error');
+        window.history.replaceState({}, '', url);
+      }
     })();
   </script>
 </head>
@@ -32,7 +38,7 @@
   <!-- Topbar / Logo + Burger -->
   <nav class="flex justify-between items-center px-6 py-3 bg-gray-800 shadow-md">
     <div class="flex items-center space-x-4">
-      <a href="index.html" class="inline-flex items-center"><img src="Logo neu.png" alt="Kesslershots Logo" class="h-20 w-auto"></a>
+      <a href="index.html" class="inline-flex items-center"><picture><source type="image/avif" srcset="/assets/img/logo-neu-96.avif 96w, /assets/img/logo-neu-192.avif 192w, /assets/img/logo-neu-288.avif 288w" sizes="80px"><source type="image/webp" srcset="/assets/img/logo-neu-96.webp 96w, /assets/img/logo-neu-192.webp 192w, /assets/img/logo-neu-288.webp 288w" sizes="80px"><img src="/assets/img/logo-neu-192.png" alt="Kesslershots Logo" class="h-20 w-auto" width="1024" height="1024" decoding="async"></picture></a>
     </div>
     <div class="fixed top-4 right-4 z-50">
       <button onclick="toggleMenu()" class="text-white bg-gray-800 px-5 py-3 text-2xl rounded-lg shadow-lg hover:bg-gray-700 transition-all">☰</button>
@@ -75,12 +81,8 @@
       <h2 class="text-2xl font-bold mb-1">Jetzt anfragen</h2>
       <p class="text-gray-600 mb-6">Ich melde mich in der Regel innerhalb von 24 Stunden.</p>
 
-      <form action="https://formsubmit.co/info@kesslershots.ch" method="POST" accept-charset="UTF-8" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- FormSubmit Hidden Inputs -->
-        <input type="hidden" name="_subject" value="Neue Anfrage über Kontaktformular – Kesslershots">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://kesslershots.ch/kontakt.html?sent=1">
+      <form action="/api/contact" method="POST" accept-charset="UTF-8" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Bots fill in this hidden field; such messages are dropped. -->
         <input type="text" name="_honey" style="display:none">
 
         <!-- Vorname / Nachname -->
@@ -155,7 +157,7 @@
   <footer class="bg-gray-800 text-white py-12 px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="space-y-4">
-        <img src="Logo neu.png" alt="Kesslershots Logo" class="h-16 w-auto">
+        <picture><source type="image/avif" srcset="/assets/img/logo-neu-96.avif 96w, /assets/img/logo-neu-192.avif 192w, /assets/img/logo-neu-288.avif 288w" sizes="64px"><source type="image/webp" srcset="/assets/img/logo-neu-96.webp 96w, /assets/img/logo-neu-192.webp 192w, /assets/img/logo-neu-288.webp 288w" sizes="64px"><img src="/assets/img/logo-neu-192.png" alt="Kesslershots Logo" class="h-16 w-auto" width="1024" height="1024" decoding="async" loading="lazy"></picture>
         <p class="text-sm text-gray-400">Eure Erinnerungen. Stilvoll verewigt.</p>
       </div>
       <div>

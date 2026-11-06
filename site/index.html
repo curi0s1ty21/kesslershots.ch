@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hochzeitsfotografie Ostschweiz | Jérôme Kesslershots</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="/assets/vendor/tailwind-2.2.19.min.css" rel="stylesheet">
+  <link href="/assets/site.css" rel="stylesheet">
 
-<link rel="icon" type="image/png" href="Logo neu.png">
-<link rel="apple-touch-icon" href="Logo neu.png">
+<link rel="icon" type="image/png" href="/assets/img/logo-neu-192.png">
+<link rel="apple-touch-icon" href="/assets/img/logo-neu-192.png">
 
 
   <!-- Meta Tags für SEO -->
@@ -124,20 +124,20 @@
   <!-- Animierte Kontakt-Icons unten links -->
   <div class="fixed bottom-4 left-4 z-50 flex flex-col gap-4">
     <a href="https://wa.me/41797511754" target="_blank" aria-label="WhatsApp" class="bg-green-500 p-3 rounded-full shadow-lg icon-hover fade-in-bottom delay-1">
-      <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png" alt="WhatsApp" />
+      <img src="/assets/icons/whatsapp.svg" width="24" height="24" alt="WhatsApp" />
     </a>
     <a href="tel:+41797511754" aria-label="Anrufen" class="bg-blue-600 p-3 rounded-full shadow-lg icon-hover fade-in-bottom delay-2">
-      <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Telefon" />
+      <img src="/assets/icons/phone.svg" width="24" height="24" alt="Telefon" />
     </a>
     <a href="mailto:info@kesslershots.ch" aria-label="E-Mail" class="bg-gray-700 p-3 rounded-full shadow-lg icon-hover fade-in-bottom delay-3">
-      <img src="https://img.icons8.com/ios-filled/24/ffffff/new-post.png" alt="Mail" />
+      <img src="/assets/icons/mail.svg" width="24" height="24" alt="Mail" />
     </a>
   </div>
 
   <!-- Navigation mit Logo -->
   <nav class="flex justify-between items-center px-6 py-3 bg-gray-800 shadow-md">
     <div class="flex items-center space-x-4">
-      <img src="Logo neu.png" alt="Kesslershots Logo" class="h-24 w-auto">
+      <picture><source type="image/avif" srcset="/assets/img/logo-neu-96.avif 96w, /assets/img/logo-neu-192.avif 192w, /assets/img/logo-neu-288.avif 288w" sizes="96px"><source type="image/webp" srcset="/assets/img/logo-neu-96.webp 96w, /assets/img/logo-neu-192.webp 192w, /assets/img/logo-neu-288.webp 288w" sizes="96px"><img src="/assets/img/logo-neu-192.png" alt="Kesslershots Logo" class="h-24 w-auto" width="1024" height="1024" decoding="async"></picture>
     </div>
     <!-- Mobile Menü Button oben rechts -->
     <div class="fixed top-4 right-4 z-50">
@@ -160,7 +160,7 @@
       <!-- Portfolio -->
       <a href="#portfolio" onclick="toggleMenu()" class="hover:text-gray-300">Portfolio</a>
       <!-- Blog -->
-      <a href="blog.html" onclick="toggleMenu()" class="hover:text-gray-300">Blog</a>
+      <template data-offline="blog"><a href="blog.html" onclick="toggleMenu()" class="hover:text-gray-300">Blog</a></template>
       <!-- Kontakt separat Seite -->
       <a href="kontakt.html" class="hover:text-gray-300">Kontakt</a>
     </div>
@@ -181,7 +181,7 @@
       <a href="#about" class="inline-block bg-gray-800 text-white px-5 py-2.5 text-sm font-semibold rounded-full shadow-md transition-transform transform hover:scale-105 hover:bg-gray-700 duration-300 ml-3">Lerne uns kennen</a>
     </div>
     <div class="animate-slide-up">
-      <img src="Couple1.jpg" alt="Brautpaar" class="w-full max-h-[420px] object-cover rounded-lg shadow-md">
+      <picture><source type="image/avif" srcset="/assets/img/couple1-160.avif 160w, /assets/img/couple1-320.avif 320w, /assets/img/couple1-640.avif 640w, /assets/img/couple1-960.avif 960w, /assets/img/couple1-1280.avif 1280w, /assets/img/couple1-1600.avif 1600w" sizes="(min-width: 768px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/couple1-160.webp 160w, /assets/img/couple1-320.webp 320w, /assets/img/couple1-640.webp 640w, /assets/img/couple1-960.webp 960w, /assets/img/couple1-1280.webp 1280w, /assets/img/couple1-1600.webp 1600w" sizes="(min-width: 768px) 50vw, 100vw"><img src="/Couple1.jpg" alt="Brautpaar" class="w-full max-h-[420px] object-cover rounded-lg shadow-md" width="1600" height="2400" decoding="async" fetchpriority="high"></picture>
     </div>
   </div>
 </section>
@@ -193,10 +193,10 @@
       <p class="text-lg text-center text-gray-300 mt-4 max-w-2xl mx-auto">So einzigartig wie eure Liebe – diese Aufnahmen erzählen eure Geschichte.</p>
       <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="aspect-[3/4] h-[800px] reveal-left overflow-hidden rounded-lg shadow-lg">
-          <img src="Hochzeit1.jpeg" alt="Brautpaar 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <picture><source type="image/avif" srcset="/assets/img/hochzeit1-160.avif 160w, /assets/img/hochzeit1-320.avif 320w, /assets/img/hochzeit1-640.avif 640w, /assets/img/hochzeit1-960.avif 960w, /assets/img/hochzeit1-1280.avif 1280w, /assets/img/hochzeit1-1600.avif 1600w" sizes="(min-width: 768px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/hochzeit1-160.webp 160w, /assets/img/hochzeit1-320.webp 320w, /assets/img/hochzeit1-640.webp 640w, /assets/img/hochzeit1-960.webp 960w, /assets/img/hochzeit1-1280.webp 1280w, /assets/img/hochzeit1-1600.webp 1600w" sizes="(min-width: 768px) 50vw, 100vw"><img src="/Hochzeit1.jpeg" alt="Brautpaar 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" width="1600" height="1068" decoding="async" loading="lazy"></picture>
         </div>
         <div class="aspect-[3/4] h-[800px] reveal-right overflow-hidden rounded-lg shadow-lg">
-          <img src="Hochzeit3.jpeg" alt="Brautpaar 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <picture><source type="image/avif" srcset="/assets/img/hochzeit3-160.avif 160w, /assets/img/hochzeit3-320.avif 320w, /assets/img/hochzeit3-640.avif 640w, /assets/img/hochzeit3-960.avif 960w, /assets/img/hochzeit3-1280.avif 1280w, /assets/img/hochzeit3-1600.avif 1600w" sizes="(min-width: 768px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/hochzeit3-160.webp 160w, /assets/img/hochzeit3-320.webp 320w, /assets/img/hochzeit3-640.webp 640w, /assets/img/hochzeit3-960.webp 960w, /assets/img/hochzeit3-1280.webp 1280w, /assets/img/hochzeit3-1600.webp 1600w" sizes="(min-width: 768px) 50vw, 100vw"><img src="/Hochzeit3.jpeg" alt="Brautpaar 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" width="1600" height="1067" decoding="async" loading="lazy"></picture>
         </div>
       </div>
     </div>
@@ -211,7 +211,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
         <div class="bg-[#fdfaf6] p-6 rounded-xl shadow-md hover:shadow-lg transition">
           <div class="flex justify-center mb-3">
-            <img src="Couple8.jpg" alt="Kunde 1" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover">
+            <picture><source type="image/avif" srcset="/assets/img/couple8-160.avif 160w, /assets/img/couple8-320.avif 320w, /assets/img/couple8-640.avif 640w, /assets/img/couple8-960.avif 960w, /assets/img/couple8-1280.avif 1280w, /assets/img/couple8-1600.avif 1600w" sizes="64px"><source type="image/webp" srcset="/assets/img/couple8-160.webp 160w, /assets/img/couple8-320.webp 320w, /assets/img/couple8-640.webp 640w, /assets/img/couple8-960.webp 960w, /assets/img/couple8-1280.webp 1280w, /assets/img/couple8-1600.webp 1600w" sizes="64px"><img src="/Couple8.jpg" alt="Kunde 1" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture>
           </div>
           <div class="flex justify-center mb-3 text-yellow-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
@@ -226,7 +226,7 @@
         </div>
         <div class="bg-[#fdfaf6] p-6 rounded-xl shadow-md hover:shadow-lg transition">
           <div class="flex justify-center mb-3">
-            <img src="Hochzeit2.jpeg" alt="Kunde 2" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover">
+            <picture><source type="image/avif" srcset="/assets/img/hochzeit2-160.avif 160w, /assets/img/hochzeit2-320.avif 320w, /assets/img/hochzeit2-640.avif 640w, /assets/img/hochzeit2-960.avif 960w, /assets/img/hochzeit2-1280.avif 1280w, /assets/img/hochzeit2-1600.avif 1600w" sizes="64px"><source type="image/webp" srcset="/assets/img/hochzeit2-160.webp 160w, /assets/img/hochzeit2-320.webp 320w, /assets/img/hochzeit2-640.webp 640w, /assets/img/hochzeit2-960.webp 960w, /assets/img/hochzeit2-1280.webp 1280w, /assets/img/hochzeit2-1600.webp 1600w" sizes="64px"><img src="/Hochzeit2.jpeg" alt="Kunde 2" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover" width="1600" height="2396" decoding="async" loading="lazy"></picture>
           </div>
           <div class="flex justify-center mb-3 text-yellow-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
@@ -237,7 +237,7 @@
         </div>
         <div class="bg-[#fdfaf6] p-6 rounded-xl shadow-md hover:shadow-lg transition">
           <div class="flex justify-center mb-3">
-            <img src="Hochzeit5.jpeg" alt="Kunde 3" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover">
+            <picture><source type="image/avif" srcset="/assets/img/hochzeit5-160.avif 160w, /assets/img/hochzeit5-320.avif 320w, /assets/img/hochzeit5-640.avif 640w, /assets/img/hochzeit5-960.avif 960w, /assets/img/hochzeit5-1280.avif 1280w, /assets/img/hochzeit5-1600.avif 1600w" sizes="64px"><source type="image/webp" srcset="/assets/img/hochzeit5-160.webp 160w, /assets/img/hochzeit5-320.webp 320w, /assets/img/hochzeit5-640.webp 640w, /assets/img/hochzeit5-960.webp 960w, /assets/img/hochzeit5-1280.webp 1280w, /assets/img/hochzeit5-1600.webp 1600w" sizes="64px"><img src="/Hochzeit5.jpeg" alt="Kunde 3" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture>
           </div>
           <div class="flex justify-center mb-3 text-yellow-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
@@ -251,7 +251,7 @@
   </section>
 
   <!-- Preise (mit Anker) -->
-  <section id="preise" class="relative py-20 px-6 bg-center bg-cover bg-fixed" style="background-image: url('./Bruecke.jpeg');">
+  <section id="preise" class="relative py-20 px-6 bg-center bg-cover bg-fixed">
   <div class="absolute inset-0 bg-black bg-opacity-40"></div>
   <div class="relative max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold text-center mb-6 text-white">Meine Preise</h2>
@@ -521,7 +521,7 @@
   <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
     <div class="lg:col-span-2 about-blob-wrap">
       <div class="about-blob">
-        <img src="Aline2.JPG" alt="Jérôme & Aline – euer Foto-Team aus St. Gallen">
+        <picture><source type="image/avif" srcset="/assets/img/aline2-160.avif 160w, /assets/img/aline2-320.avif 320w, /assets/img/aline2-640.avif 640w, /assets/img/aline2-960.avif 960w, /assets/img/aline2-1237.avif 1237w" sizes="(min-width: 1024px) 40vw, 100vw"><source type="image/webp" srcset="/assets/img/aline2-160.webp 160w, /assets/img/aline2-320.webp 320w, /assets/img/aline2-640.webp 640w, /assets/img/aline2-960.webp 960w, /assets/img/aline2-1237.webp 1237w" sizes="(min-width: 1024px) 40vw, 100vw"><img src="/Aline2.JPG" alt="Jérôme & Aline – euer Foto-Team aus St. Gallen" width="1237" height="1546" decoding="async" loading="lazy"></picture>
       </div>
     </div>
 
@@ -592,19 +592,19 @@
         <div class="flex items-center gap-3">
           <a href="https://wa.me/41797511754" target="_blank" rel="noopener" aria-label="WhatsApp"
              class="bg-green-500 p-3 rounded-full shadow hover:shadow-md transition">
-            <img src="https://img.icons8.com/ios-filled/22/ffffff/whatsapp.png" alt="WhatsApp">
+            <img src="/assets/icons/whatsapp.svg" width="22" height="22" alt="WhatsApp">
           </a>
           <a href="tel:+41797511754" aria-label="Telefon"
              class="bg-blue-600 p-3 rounded-full shadow hover:shadow-md transition">
-            <img src="https://img.icons8.com/ios-filled/22/ffffff/phone.png" alt="Telefon">
+            <img src="/assets/icons/phone.svg" width="22" height="22" alt="Telefon">
           </a>
           <a href="mailto:info@kesslershots.ch" aria-label="E-Mail"
              class="bg-gray-700 p-3 rounded-full shadow hover:shadow-md transition">
-            <img src="https://img.icons8.com/ios-filled/22/ffffff/new-post.png" alt="E-Mail">
+            <img src="/assets/icons/mail.svg" width="22" height="22" alt="E-Mail">
           </a>
           <a href="https://instagram.com/kesslerwedding" target="_blank" rel="noopener" aria-label="Instagram"
              class="bg-pink-600 p-3 rounded-full shadow hover:shadow-md transition">
-            <img src="https://img.icons8.com/ios-filled/22/ffffff/instagram-new.png" alt="Instagram">
+            <img src="/assets/icons/instagram.svg" width="22" height="22" alt="Instagram">
           </a>
         </div>
       </div>
@@ -616,7 +616,7 @@
   <!-- Grosses Einzelbild -->
   <section class="py-20 bg-white">
     <div class="max-w-screen-xl mx-auto px-4">
-      <div class="overflow-hidden rounded-xl shadow-2xl h-[800px]"><img src="Hochzeit7.jpeg" alt="Hochzeitsbild" class="w-full h-full object-cover"></div>
+      <div class="overflow-hidden rounded-xl shadow-2xl h-[800px]"><picture><source type="image/avif" srcset="/assets/img/hochzeit7-160.avif 160w, /assets/img/hochzeit7-320.avif 320w, /assets/img/hochzeit7-640.avif 640w, /assets/img/hochzeit7-960.avif 960w, /assets/img/hochzeit7-1280.avif 1280w, /assets/img/hochzeit7-1600.avif 1600w" sizes="(min-width: 1280px) 1248px, 100vw"><source type="image/webp" srcset="/assets/img/hochzeit7-160.webp 160w, /assets/img/hochzeit7-320.webp 320w, /assets/img/hochzeit7-640.webp 640w, /assets/img/hochzeit7-960.webp 960w, /assets/img/hochzeit7-1280.webp 1280w, /assets/img/hochzeit7-1600.webp 1600w" sizes="(min-width: 1280px) 1248px, 100vw"><img src="/Hochzeit7.jpeg" alt="Hochzeitsbild" class="w-full h-full object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></div>
     </div>
   </section>
 
@@ -628,23 +628,24 @@
       <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800">Portfolio</h2>
       <p class="text-lg text-center text-gray-600 mt-3 max-w-2xl mx-auto">Einblicke in echte Hochzeiten – Emotionen, Details und ungestellte Momente.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit1.jpeg" alt="Hochzeit 1" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit2.jpeg" alt="Hochzeit 2" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit3.jpeg" alt="Hochzeit 3" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit4.jpeg" alt="Hochzeit 4" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit5.jpeg" alt="Hochzeit 5" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit6.jpeg" alt="Hochzeit 6" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit7.jpeg" alt="Hochzeit 7" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit8.jpeg" alt="Hochzeit 8" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit9.jpeg" alt="Hochzeit 9" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit10.jpeg" alt="Hochzeit 10" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Couple8.jpg" alt="Couple 8" class="w-full h-72 object-cover"></figure>
-        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Bruecke.jpeg" alt="Brücke" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit1-160.avif 160w, /assets/img/hochzeit1-320.avif 320w, /assets/img/hochzeit1-640.avif 640w, /assets/img/hochzeit1-960.avif 960w, /assets/img/hochzeit1-1280.avif 1280w, /assets/img/hochzeit1-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit1-160.webp 160w, /assets/img/hochzeit1-320.webp 320w, /assets/img/hochzeit1-640.webp 640w, /assets/img/hochzeit1-960.webp 960w, /assets/img/hochzeit1-1280.webp 1280w, /assets/img/hochzeit1-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit1.jpeg" alt="Hochzeit 1" class="w-full h-72 object-cover" width="1600" height="1068" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit2-160.avif 160w, /assets/img/hochzeit2-320.avif 320w, /assets/img/hochzeit2-640.avif 640w, /assets/img/hochzeit2-960.avif 960w, /assets/img/hochzeit2-1280.avif 1280w, /assets/img/hochzeit2-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit2-160.webp 160w, /assets/img/hochzeit2-320.webp 320w, /assets/img/hochzeit2-640.webp 640w, /assets/img/hochzeit2-960.webp 960w, /assets/img/hochzeit2-1280.webp 1280w, /assets/img/hochzeit2-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit2.jpeg" alt="Hochzeit 2" class="w-full h-72 object-cover" width="1600" height="2396" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit3-160.avif 160w, /assets/img/hochzeit3-320.avif 320w, /assets/img/hochzeit3-640.avif 640w, /assets/img/hochzeit3-960.avif 960w, /assets/img/hochzeit3-1280.avif 1280w, /assets/img/hochzeit3-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit3-160.webp 160w, /assets/img/hochzeit3-320.webp 320w, /assets/img/hochzeit3-640.webp 640w, /assets/img/hochzeit3-960.webp 960w, /assets/img/hochzeit3-1280.webp 1280w, /assets/img/hochzeit3-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit3.jpeg" alt="Hochzeit 3" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit4-160.avif 160w, /assets/img/hochzeit4-320.avif 320w, /assets/img/hochzeit4-640.avif 640w, /assets/img/hochzeit4-960.avif 960w, /assets/img/hochzeit4-1280.avif 1280w, /assets/img/hochzeit4-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit4-160.webp 160w, /assets/img/hochzeit4-320.webp 320w, /assets/img/hochzeit4-640.webp 640w, /assets/img/hochzeit4-960.webp 960w, /assets/img/hochzeit4-1280.webp 1280w, /assets/img/hochzeit4-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit4.jpeg" alt="Hochzeit 4" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit5-160.avif 160w, /assets/img/hochzeit5-320.avif 320w, /assets/img/hochzeit5-640.avif 640w, /assets/img/hochzeit5-960.avif 960w, /assets/img/hochzeit5-1280.avif 1280w, /assets/img/hochzeit5-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit5-160.webp 160w, /assets/img/hochzeit5-320.webp 320w, /assets/img/hochzeit5-640.webp 640w, /assets/img/hochzeit5-960.webp 960w, /assets/img/hochzeit5-1280.webp 1280w, /assets/img/hochzeit5-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit5.jpeg" alt="Hochzeit 5" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit6-160.avif 160w, /assets/img/hochzeit6-320.avif 320w, /assets/img/hochzeit6-640.avif 640w, /assets/img/hochzeit6-960.avif 960w, /assets/img/hochzeit6-1280.avif 1280w, /assets/img/hochzeit6-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit6-160.webp 160w, /assets/img/hochzeit6-320.webp 320w, /assets/img/hochzeit6-640.webp 640w, /assets/img/hochzeit6-960.webp 960w, /assets/img/hochzeit6-1280.webp 1280w, /assets/img/hochzeit6-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit6.jpeg" alt="Hochzeit 6" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit7-160.avif 160w, /assets/img/hochzeit7-320.avif 320w, /assets/img/hochzeit7-640.avif 640w, /assets/img/hochzeit7-960.avif 960w, /assets/img/hochzeit7-1280.avif 1280w, /assets/img/hochzeit7-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit7-160.webp 160w, /assets/img/hochzeit7-320.webp 320w, /assets/img/hochzeit7-640.webp 640w, /assets/img/hochzeit7-960.webp 960w, /assets/img/hochzeit7-1280.webp 1280w, /assets/img/hochzeit7-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit7.jpeg" alt="Hochzeit 7" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit8-160.avif 160w, /assets/img/hochzeit8-320.avif 320w, /assets/img/hochzeit8-640.avif 640w, /assets/img/hochzeit8-960.avif 960w, /assets/img/hochzeit8-1280.avif 1280w, /assets/img/hochzeit8-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit8-160.webp 160w, /assets/img/hochzeit8-320.webp 320w, /assets/img/hochzeit8-640.webp 640w, /assets/img/hochzeit8-960.webp 960w, /assets/img/hochzeit8-1280.webp 1280w, /assets/img/hochzeit8-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit8.jpeg" alt="Hochzeit 8" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit9-160.avif 160w, /assets/img/hochzeit9-320.avif 320w, /assets/img/hochzeit9-640.avif 640w, /assets/img/hochzeit9-960.avif 960w, /assets/img/hochzeit9-1280.avif 1280w, /assets/img/hochzeit9-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit9-160.webp 160w, /assets/img/hochzeit9-320.webp 320w, /assets/img/hochzeit9-640.webp 640w, /assets/img/hochzeit9-960.webp 960w, /assets/img/hochzeit9-1280.webp 1280w, /assets/img/hochzeit9-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit9.jpeg" alt="Hochzeit 9" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/hochzeit10-160.avif 160w, /assets/img/hochzeit10-320.avif 320w, /assets/img/hochzeit10-640.avif 640w, /assets/img/hochzeit10-960.avif 960w, /assets/img/hochzeit10-1280.avif 1280w, /assets/img/hochzeit10-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/hochzeit10-160.webp 160w, /assets/img/hochzeit10-320.webp 320w, /assets/img/hochzeit10-640.webp 640w, /assets/img/hochzeit10-960.webp 960w, /assets/img/hochzeit10-1280.webp 1280w, /assets/img/hochzeit10-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Hochzeit10.jpeg" alt="Hochzeit 10" class="w-full h-72 object-cover" width="1600" height="1068" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/couple8-160.avif 160w, /assets/img/couple8-320.avif 320w, /assets/img/couple8-640.avif 640w, /assets/img/couple8-960.avif 960w, /assets/img/couple8-1280.avif 1280w, /assets/img/couple8-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/couple8-160.webp 160w, /assets/img/couple8-320.webp 320w, /assets/img/couple8-640.webp 640w, /assets/img/couple8-960.webp 960w, /assets/img/couple8-1280.webp 1280w, /assets/img/couple8-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Couple8.jpg" alt="Couple 8" class="w-full h-72 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><picture><source type="image/avif" srcset="/assets/img/bruecke-160.avif 160w, /assets/img/bruecke-320.avif 320w, /assets/img/bruecke-640.avif 640w, /assets/img/bruecke-960.avif 960w, /assets/img/bruecke-1280.avif 1280w, /assets/img/bruecke-1600.avif 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><source type="image/webp" srcset="/assets/img/bruecke-160.webp 160w, /assets/img/bruecke-320.webp 320w, /assets/img/bruecke-640.webp 640w, /assets/img/bruecke-960.webp 960w, /assets/img/bruecke-1280.webp 1280w, /assets/img/bruecke-1600.webp 1600w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"><img src="/Bruecke.jpeg" alt="Brücke" class="w-full h-72 object-cover" width="1600" height="1066" decoding="async" loading="lazy"></picture></figure>
       </div>
     </div>
   </section>
 
 <!-- Blog-Preview (3 neueste) -->
+<template data-offline="blog">
 <section id="blog" class="py-16 bg-white">
   <div class="max-w-5xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800">Aktuelle Blogbeiträge</h2>
@@ -656,7 +657,7 @@
       <!-- 1) Hochzeitslocations -->
       <article class="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
         <a href="blog/hochzeitslocations-ostschweiz/index.html" class="block">
-          <img src="Blog/hochzeitslocations-ostschweiz/Schloss Reichenau.jpg" alt="Hochzeitslocations Ostschweiz" class="w-full h-44 object-cover">
+          <picture><source type="image/avif" srcset="/assets/img/schloss-reichenau-160.avif 160w, /assets/img/schloss-reichenau-320.avif 320w, /assets/img/schloss-reichenau-640.avif 640w, /assets/img/schloss-reichenau-960.avif 960w, /assets/img/schloss-reichenau-1280.avif 1280w, /assets/img/schloss-reichenau-1300.avif 1300w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/schloss-reichenau-160.webp 160w, /assets/img/schloss-reichenau-320.webp 320w, /assets/img/schloss-reichenau-640.webp 640w, /assets/img/schloss-reichenau-960.webp 960w, /assets/img/schloss-reichenau-1280.webp 1280w, /assets/img/schloss-reichenau-1300.webp 1300w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"><img src="/Blog/hochzeitslocations-ostschweiz/Schloss Reichenau.jpg" alt="Hochzeitslocations Ostschweiz" class="w-full h-44 object-cover" width="1300" height="865" decoding="async" loading="lazy"></picture>
           <div class="p-4">
             <div class="flex items-center gap-2 text-xs text-gray-600">
               <span class="px-2 py-1 bg-gray-100 rounded-full">Hochzeit</span>
@@ -673,7 +674,7 @@
       <!-- 2) häufige Fehler -->
       <article class="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
         <a href="blog/5 Fehler/index.html" class="block">
-          <img src="Hochzeit2.jpeg" alt="häufige Fehler" class="w-full h-44 object-cover">
+          <picture><source type="image/avif" srcset="/assets/img/hochzeit2-160.avif 160w, /assets/img/hochzeit2-320.avif 320w, /assets/img/hochzeit2-640.avif 640w, /assets/img/hochzeit2-960.avif 960w, /assets/img/hochzeit2-1280.avif 1280w, /assets/img/hochzeit2-1600.avif 1600w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/hochzeit2-160.webp 160w, /assets/img/hochzeit2-320.webp 320w, /assets/img/hochzeit2-640.webp 640w, /assets/img/hochzeit2-960.webp 960w, /assets/img/hochzeit2-1280.webp 1280w, /assets/img/hochzeit2-1600.webp 1600w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"><img src="/Hochzeit2.jpeg" alt="häufige Fehler" class="w-full h-44 object-cover" width="1600" height="2396" decoding="async" loading="lazy"></picture>
           <div class="p-4">
             <div class="flex items-center gap-2 text-xs text-gray-600">
               <span class="px-2 py-1 bg-gray-100 rounded-full">Hochzeit</span>
@@ -690,7 +691,7 @@
       <!-- 3) Golden Hour -->
       <article class="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
         <a href="blog/Golden Hour/index.html" class="block">
-          <img src="Hochzeit5.jpeg" alt="Warum kleine Details grosse Wirkung haben" class="w-full h-44 object-cover">
+          <picture><source type="image/avif" srcset="/assets/img/hochzeit5-160.avif 160w, /assets/img/hochzeit5-320.avif 320w, /assets/img/hochzeit5-640.avif 640w, /assets/img/hochzeit5-960.avif 960w, /assets/img/hochzeit5-1280.avif 1280w, /assets/img/hochzeit5-1600.avif 1600w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/hochzeit5-160.webp 160w, /assets/img/hochzeit5-320.webp 320w, /assets/img/hochzeit5-640.webp 640w, /assets/img/hochzeit5-960.webp 960w, /assets/img/hochzeit5-1280.webp 1280w, /assets/img/hochzeit5-1600.webp 1600w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"><img src="/Hochzeit5.jpeg" alt="Warum kleine Details grosse Wirkung haben" class="w-full h-44 object-cover" width="1600" height="1067" decoding="async" loading="lazy"></picture>
           <div class="p-4">
             <div class="flex items-center gap-2 text-xs text-gray-600">
               <span class="px-2 py-1 bg-gray-100 rounded-full">Hochzeit</span>
@@ -711,6 +712,7 @@
     </div>
   </div>
 </section>
+</template>
 
 <!-- FAQ -->
 <section class="bg-white py-16 px-6" id="faq">
@@ -777,7 +779,7 @@
 <footer class="bg-gray-800 text-white py-12 px-6">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
     <div class="space-y-4">
-      <img src="Logo neu.png" alt="Kesslershots Logo" class="h-16 w-auto">
+      <picture><source type="image/avif" srcset="/assets/img/logo-neu-96.avif 96w, /assets/img/logo-neu-192.avif 192w, /assets/img/logo-neu-288.avif 288w" sizes="64px"><source type="image/webp" srcset="/assets/img/logo-neu-96.webp 96w, /assets/img/logo-neu-192.webp 192w, /assets/img/logo-neu-288.webp 288w" sizes="64px"><img src="/assets/img/logo-neu-192.png" alt="Kesslershots Logo" class="h-16 w-auto" width="1024" height="1024" decoding="async" loading="lazy"></picture>
       <p class="text-sm text-gray-400">Eure Erinnerungen. Stilvoll verewigt.</p>
     </div>
     <div>
@@ -788,7 +790,7 @@
         <li><a href="#preise" class="hover:text-white">Preise</a></li>
         <li><a href="#about" class="hover:text-white">Über uns</a></li>
         <li><a href="#portfolio" class="hover:text-white">Portfolio</a></li>
-        <li><a href="blog.html" class="hover:text-white">Blog</a></li>
+        <template data-offline="blog"><li><a href="blog.html" class="hover:text-white">Blog</a></li></template>
         <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
         <li><a href="Datenschutzerklärung.html" class="hover:text-white">Datenschutz</a></li>
       </ul>
@@ -797,7 +799,7 @@
       <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
       <ul class="space-y-2 text-gray-300 text-sm">
         <li><a href="mailto:kontakt@kesslershots.ch" class="hover:text-white">E-Mail schreiben</a></li>
-        <li><a href="https://wa.me/41791234567" target="_blank" class="hover:text-white">WhatsApp</a></li>
+        <li><a href="https://wa.me/41797511754" target="_blank" class="hover:text-white">WhatsApp</a></li>
         <li><a href="https://instagram.com/kesslerwedding" target="_blank" class="hover:text-white">Instagram</a></li>
         <li><a href="https://facebook.com/kesslershots" target="_blank" class="hover:text-white">Facebook</a></li>
       </ul>
