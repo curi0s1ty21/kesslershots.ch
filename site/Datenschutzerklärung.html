@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung | Jérôme Kesslershots</title>
+
+  <!-- Tailwind + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Meta -->
+  <meta name="description" content="Datenschutzerklärung von Kesslershots – Hochzeitsfotograf in St. Gallen, Rheintal, Appenzell und der Ostschweiz. Infos zu Cookies, Kontaktformular, Datenverarbeitung und SSL.">
+  <meta name="author" content="Jérôme Kesslershots">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="/Logo.jpg" sizes="32x32">
+  <link rel="icon" type="image/png" href="/Logo.jpg" sizes="192x192">
+  <link rel="apple-touch-icon" href="/Logo.jpg">
+  <meta name="msapplication-TileImage" content="/favicon.png">
+
+  <style>
+    /* HTML & Body Reset */
+    html, body { margin: 0; padding: 0; }
+    footer { margin-bottom: 0 !important; }
+    body { font-family: 'Dosis', sans-serif; }
+
+    /* Animationen (wie Landingpage) */
+    .reveal-left, .reveal-right { opacity: 0; transition: all 1s ease-out; }
+    .reveal-left { transform: translateX(-60px); }
+    .reveal-right { transform: translateX(60px); }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    @keyframes slideUpFade { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-slide-up { animation: slideUpFade 1s ease-out forwards; opacity: 0; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease-in-out; }
+    .fade-button { transition: all 0.3s ease-in-out; }
+    .fade-button:hover { transform: scale(1.05); background-color: #1f2937; }
+
+    /* Segmented (falls du später Tabs brauchst) */
+    .segmented { display: inline-flex; gap: 6px; padding: 6px; border-radius: 9999px; background: rgba(31,41,55,.88); backdrop-filter: saturate(160%) blur(8px); -webkit-backdrop-filter:saturate(160%) blur(8px); box-shadow:0 14px 30px rgba(0,0,0,.35); }
+    .seg-btn{ min-width: 11rem; padding:.65rem 1.1rem; border-radius:9999px; font-weight:700; text-align:center; color:rgba(255,255,255,.9); transition:all .18s ease; line-height:1.1; }
+    .seg-btn:hover{ background:rgba(255,255,255,.14); }
+    .seg-btn.is-active{ background:#fff; color:#1f2937; box-shadow:0 10px 22px rgba(0,0,0,.25); }
+
+    @keyframes swipeInRight { from {opacity:0; transform:translateX(48px)} to {opacity:1; transform:translateX(0)} }
+    @keyframes swipeInLeft  { from {opacity:0; transform:translateX(-48px)} to {opacity:1; transform:translateX(0)} }
+    .swipe-enter-right{ animation:swipeInRight .48s ease-out both }
+    .swipe-enter-left{  animation:swipeInLeft  .48s ease-out both }
+
+    @media (max-width: 420px){
+      .seg-btn{ min-width: 9.5rem; font-size: .95rem; }
+    }
+  </style>
+
+  <script>
+    // Smooth scroll helper
+    function goTop(ev){ ev && ev.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return false; }
+    // Offcanvas Toggle
+    function toggleMenu(){ const menu = document.getElementById('sideMenu'); menu.classList.toggle('translate-x-full'); }
+    // Details Toggle (für Accordion-Abschnitte)
+    function toggleDetails(button){ const details = button.parentElement.querySelector('.details'); const isVisible = !details.classList.contains('hidden'); details.classList.toggle('hidden'); button.textContent = isVisible ? 'Mehr erfahren ↓' : 'Weniger anzeigen ↑'; }
+    // Reveal on scroll
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.reveal-left, .reveal-right').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) { el.classList.add('visible'); }
+      });
+    });
+  </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- Kontakt-Fab (gleich wie Landingpage) -->
+  <div class="fixed bottom-4 left-4 z-50 flex flex-col gap-4">
+    <a href="https://wa.me/41797511754" target="_blank" aria-label="WhatsApp" class="bg-green-500 p-3 rounded-full shadow-lg">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png" alt="WhatsApp" />
+    </a>
+    <a href="tel:+41797511754" aria-label="Anrufen" class="bg-blue-600 p-3 rounded-full shadow-lg">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Telefon" />
+    </a>
+    <a href="mailto:info@kesslershots.ch" aria-label="E-Mail" class="bg-gray-700 p-3 rounded-full shadow-lg">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/new-post.png" alt="Mail" />
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex justify-between items-center px-6 py-3 bg-gray-800 shadow-md">
+    <div class="flex items-center space-x-4">
+      <a href="index.html" aria-label="Startseite">
+        <img src="Logo neu.png" alt="Kesslershots Logo" class="h-24 w-auto">
+      </a>
+    </div>
+    <!-- Mobile Menü Button -->
+    <div class="fixed top-4 right-4 z-50">
+      <button onclick="toggleMenu()" class="text-white bg-gray-800 px-5 py-4 text-3xl rounded-lg shadow-lg hover:bg-gray-700 transition-all">☰</button>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Seitenmenü -->
+  <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform translate-x-full transition-transform duration-300 z-40 shadow-lg">
+    <div class="p-6 flex flex-col space-y-5 text-lg">
+      <button onclick="toggleMenu()" class="text-right text-gray-400 hover:text-white self-end text-2xl">&times;</button>
+      <a href="index.html" class="hover:text-gray-300">Home</a>
+      <a href="index.html#testimonials" class="hover:text-gray-300">Referenzen</a>
+      <a href="index.html#preise" class="hover:text-gray-300">Preise</a>
+      <a href="index.html#about" class="hover:text-gray-300">Über uns</a>
+      <a href="index.html#portfolio" class="hover:text-gray-300">Portfolio</a>
+      <a href="blog.html" class="hover:text-gray-300">Blog</a>
+      <a href="kontakt.html" class="hover:text-gray-300">Kontakt</a>
+    </div>
+  </div>
+
+  <!-- Header/Hero klein -->
+  <section class="relative bg-gray-900 py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-white">Datenschutzerklärung</h1>
+      <p class="text-gray-300 mt-3">Transparente Informationen zu Cookies, Kontaktformular, Datenverarbeitung &amp; SSL.</p>
+      <div class="mt-6">
+        <a href="index.html#preise" class="inline-block bg-white text-gray-900 px-5 py-2.5 text-sm font-semibold rounded-full shadow hover:shadow-md">Zu den Paketen</a>
+        <a href="kontakt.html" class="inline-block bg-gray-800 text-white px-5 py-2.5 text-sm font-semibold rounded-full shadow hover:bg-gray-700 ml-3">Kontakt</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inhalt -->
+  <main class="py-16 px-6">
+    <div class="max-w-4xl mx-auto space-y-8 leading-relaxed">
+      <p>
+        Der Schutz Ihrer persönlichen Daten ist mir, <strong>Kesslershots</strong>, ein grosses Anliegen. Diese Datenschutzerklärung informiert Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen meiner Website,
+        gemäss dem <strong>Schweizer Datenschutzgesetz (nDSG)</strong> sowie der <strong>EU-Datenschutzgrundverordnung (DSGVO)</strong>.
+      </p>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">1. Verantwortliche Stelle</h2>
+        <p>
+          Jérôme Kessler<br>
+          Strengelenstrasse 3, 9424 Rheineck, Schweiz<br>
+          E-Mail: <a href="mailto:info@kesslershots.ch" class="text-blue-600 hover:underline">info@kesslershots.ch</a>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+        <p>
+          Ich verarbeite personenbezogene Daten (z. B. Name, Adresse, Telefonnummer, E-Mail), die Sie mir freiwillig zur Verfügung stellen – etwa über das
+          <a href="kontakt.html" class="text-blue-600 hover:underline">Kontaktformular</a>, per E-Mail oder Telefon. Diese Daten nutze ich ausschliesslich zur Bearbeitung Ihrer Anfrage, Angebotserstellung oder Vertragserfüllung.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">3. Cookies, eingebettete Inhalte &amp; Analytics</h2>
+        <p>
+          Meine Website verwendet Cookies, um die Benutzerfreundlichkeit zu verbessern. Falls Tools wie Google Analytics oder eingebettete Inhalte (z. B. Instagram, YouTube, Google Fonts) eingesetzt werden,
+          können dabei Daten wie IP-Adressen oder Nutzungsstatistiken erhoben werden. Diese Daten helfen mir, mein Angebot zu optimieren.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">4. Weitergabe von Daten</h2>
+        <p>
+          Ihre Daten werden nicht an Dritte weitergegeben, ausser dies ist gesetzlich vorgeschrieben oder zur Vertragserfüllung notwendig (z. B. bei Fotoprodukten durch Partner-Labore).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">5. Speicherdauer</h2>
+        <p>
+          Personenbezogene Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage oder die Vertragserfüllung erforderlich ist.
+          Nach Ablauf gesetzlicher Aufbewahrungsfristen werden diese gelöscht.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">6. Ihre Rechte</h2>
+        <p>
+          Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten.
+          Für Anfragen genügt eine E-Mail an <a href="mailto:info@kesslershots.ch" class="text-blue-600 hover:underline">info@kesslershots.ch</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">7. SSL-Verschlüsselung</h2>
+        <p>Meine Website nutzt eine SSL-Verschlüsselung (https://), um Ihre Daten bei der Übertragung bestmöglich zu schützen.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">8. Aktualisierung</h2>
+        <p>Ich behalte mir vor, diese Datenschutzerklärung jederzeit zu aktualisieren, damit sie stets den aktuellen rechtlichen Anforderungen entspricht.</p>
+      </section>
+
+      <p class="text-sm text-gray-500">Letzte Aktualisierung: September 2025</p>
+
+      <div class="pt-2">
+        <a href="index.html#preise" class="inline-block text-blue-600 hover:underline font-medium">→ Zu den Preisen &amp; Paketen</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (identisch) -->
+  <footer class="bg-gray-800 text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="space-y-4">
+        <a href="index.html" aria-label="Startseite">
+          <img src="Logo neu.png" alt="Kesslershots Logo" class="h-16 w-auto">
+        </a>
+        <p class="text-sm text-gray-400">Eure Erinnerungen. Stilvoll verewigt.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="index.html#testimonials" class="hover:text-white">Referenzen</a></li>
+          <li><a href="index.html#preise" class="hover:text-white">Preise</a></li>
+          <li><a href="index.html#about" class="hover:text-white">Über uns</a></li>
+          <li><a href="index.html#portfolio" class="hover:text-white">Portfolio</a></li>
+          <li><a href="blog.html" class="hover:text-white">Blog</a></li>
+          <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
+          <li><a href="datenschutz.html" class="hover:text-white">Datenschutz</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="mailto:kontakt@kesslershots.ch" class="hover:text-white">E-Mail schreiben</a></li>
+          <li><a href="https://wa.me/41791234567" target="_blank" class="hover:text-white">WhatsApp</a></li>
+          <li><a href="https://instagram.com/kesslershots" target="_blank" class="hover:text-white">Instagram</a></li>
+          <li><a href="https://facebook.com/kesslershots" target="_blank" class="hover:text-white">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-10">
+      &copy; 2025 Kesslershots. Alle Rechte vorbehalten. · <a href="datenschutz.html" class="hover:text-white">Datenschutzerklärung</a>
+    </div>
+  </footer>
+
+  <!-- (Optional) Kleines Script für etwaige Tabs – hier nicht benötigt -->
+  <script>
+    // Nichts weiter nötig – Navigation/Offcanvas funktionieren wie auf der Startseite.
+  </script>
+</body>
+</html>

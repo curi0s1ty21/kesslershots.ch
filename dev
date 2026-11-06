@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Developer commands. Run ./dev without arguments for the list.
+set -euo pipefail
+cd "$(dirname "$0")"
+
+case "${1:-help}" in
+  serve)
+    shift
+    exec python3 scripts/serve.py "$@"
+    ;;
+  links)
+    exec python3 scripts/check_links.py
+    ;;
+  compare)
+    exec python3 scripts/compare_live.py
+    ;;
+  mirror)
+    exec scripts/mirror.sh
+    ;;
+  plugin-check)
+    if ! command -v nix >/dev/null; then
+      echo "Nix is not installed. See https://nixos.org/download" >&2
+      exit 1
+    fi
+    nix fmt
+    exec nix flake check
+    ;;
+  *)
+    cat <<'EOF'
+Usage: ./dev <command>
+
+  serve [--port N]  Serve site/ on http://localhost:7979
+  links             List links and images in site/ that lead nowhere
+  compare           Compare site/ with the live site, byte for byte
+  mirror            Replace site/ with a fresh download of the live site
+  plugin-check      Format the Nix files and run the Neo plugin checks (needs Nix)
+EOF
+    ;;
+esac

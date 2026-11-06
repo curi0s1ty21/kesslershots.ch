@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hochzeitsfotografie Ostschweiz | Jérôme Kesslershots</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="Logo neu.png">
+<link rel="apple-touch-icon" href="Logo neu.png">
+
+
+  <!-- Meta Tags für SEO -->
+  <meta name="description" content="Hochzeitsfotograf in St. Gallen, Rheintal, Appenzell und der Ostschweiz. Authentische Hochzeitsreportagen, stilvolle Paarshootings & emotionale Erinnerungen – professionell festgehalten von Kesslershots.">
+  <meta name="keywords" content="Hochzeitsfotograf Ostschweiz, Fotograf St. Gallen, Paarshooting Appenzell, Hochzeitsreportage Rheintal, professionelle Hochzeitsfotos, Fotograf Hochzeit Schweiz, Kesslershots, emotionale Hochzeitsbilder, Heiraten Ostschweiz, Hochzeitsfotografie St. Gallen">
+  <meta name="author" content="Jérôme Kesslershots">
+
+  <link rel="icon" type="image/png" href="/Logo.jpg" sizes="32x32">
+  <link rel="icon" type="image/png" href="/Logo.jpg" sizes="192x192">
+  <link rel="apple-touch-icon" href="/Logo.jpg">
+  <meta name="msapplication-TileImage" content="/favicon.png">
+
+  <style>
+    /* HTML & Body Reset */
+    html, body { margin: 0; padding: 0; }
+    footer { margin-bottom: 0 !important; }
+    body { font-family: 'Dosis', sans-serif; }
+
+    /* Animationen */
+    .reveal-left, .reveal-right { opacity: 0; transition: all 1s ease-out; }
+    .reveal-left { transform: translateX(-60px); }
+    .reveal-right { transform: translateX(60px); }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    @keyframes slideUpFade { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-slide-up { animation: slideUpFade 1s ease-out forwards; opacity: 0; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease-in-out; }
+    .fade-button { transition: all 0.3s ease-in-out; }
+    .fade-button:hover { transform: scale(1.05); background-color: #1f2937; }
+
+    /* Masonry Portfolio */
+    .masonry { column-count: 1; column-gap: 1rem; }
+    @media (min-width: 640px) { .masonry { column-count: 2; } }
+    @media (min-width: 1024px){ .masonry { column-count: 4; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 1rem; overflow: hidden; border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(0,0,0,.08); background: #fff; }
+    .masonry-item img { width: 100%; height: auto; display: block; transition: transform .4s ease, filter .3s ease; }
+    .masonry-item:hover img { transform: scale(1.03); filter: saturate(1.03); }
+
+    /* Blob-Image Wrapper */
+    .about-blob-wrap { position: relative; isolation: isolate; }
+    .about-blob-wrap::before { content: ""; position: absolute; inset: -24px; z-index: -1; filter: blur(26px); border-radius: 58% 42% 55% 45% / 45% 55% 48% 52%; background: radial-gradient(60% 60% at 30% 30%, #fdfaf6 0%, #ffffff 50%, transparent 70%), radial-gradient(50% 50% at 75% 40%, rgba(31,41,55,0.06) 0%, transparent 60%); }
+
+    .about-blob { width: 100%; height: 520px; border-radius: 56% 44% 58% 42% / 52% 47% 53% 48%; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,.12); background: #fff; transition: transform .4s ease, box-shadow .4s ease; }
+    .about-blob:hover { transform: translateY(-2px); box-shadow: 0 26px 60px rgba(0,0,0,.16); }
+    .about-blob img { width: 100%; height: 100%; object-fit: cover; }
+    @media (min-width: 1024px) { .about-blob { height: 600px; } }
+    @supports not (border-radius: 56% 44% 58% 42% / 52% 47% 53% 48%) { .about-blob { border-radius: 2rem; } .about-blob-wrap::before { border-radius: 2.25rem; } }
+  
+/* ---- Segmented Control (zentriert, gut lesbar auf Bild) ---- */
+.segmented {
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 9999px;
+  background: rgba(31, 41, 55, .88);        /* dunkle Glasfläche */
+  backdrop-filter: saturate(160%) blur(8px);
+  -webkit-backdrop-filter: saturate(160%) blur(8px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35);
+}
+
+.seg-btn{
+  min-width: 11rem;                          /* gleiche Buttons */
+  padding: .65rem 1.1rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-align: center;
+  color: rgba(255,255,255,.9);
+  transition: all .18s ease;
+  line-height: 1.1;
+}
+.seg-btn:hover{ background: rgba(255,255,255,.14); }
+.seg-btn.is-active{
+  background: #ffffff;
+  color: #1f2937;                            /* gray-800 */
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+}
+
+/* Swipe-Animationen der Karten */
+@keyframes swipeInRight { from {opacity:0; transform:translateX(48px)} to {opacity:1; transform:translateX(0)} }
+@keyframes swipeInLeft  { from {opacity:0; transform:translateX(-48px)} to {opacity:1; transform:translateX(0)} }
+.swipe-enter-right{ animation:swipeInRight .48s ease-out both }
+.swipe-enter-left{  animation:swipeInLeft  .48s ease-out both }
+
+/* Mobile: etwas schmaler */
+@media (max-width: 420px){
+  .seg-btn{ min-width: 9.5rem; font-size: .95rem; }
+}
+  </style>
+
+  <script>
+    // Smooth scroll helper
+    function goTop(ev){ ev && ev.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return false; }
+    // Offcanvas Toggle
+    function toggleMenu(){ const menu = document.getElementById('sideMenu'); menu.classList.toggle('translate-x-full'); }
+    // Details Toggle
+    function toggleDetails(button){ const details = button.parentElement.querySelector('.details'); const isVisible = !details.classList.contains('hidden'); details.classList.toggle('hidden'); button.textContent = isVisible ? 'Mehr erfahren ↓' : 'Weniger anzeigen ↑'; }
+    // Reveal on scroll
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.reveal-left, .reveal-right').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) { el.classList.add('visible'); }
+      });
+    });
+  </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- Animierte Kontakt-Icons unten links -->
+  <div class="fixed bottom-4 left-4 z-50 flex flex-col gap-4">
+    <a href="https://wa.me/41797511754" target="_blank" aria-label="WhatsApp" class="bg-green-500 p-3 rounded-full shadow-lg icon-hover fade-in-bottom delay-1">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png" alt="WhatsApp" />
+    </a>
+    <a href="tel:+41797511754" aria-label="Anrufen" class="bg-blue-600 p-3 rounded-full shadow-lg icon-hover fade-in-bottom delay-2">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Telefon" />
+    </a>
+    <a href="mailto:info@kesslershots.ch" aria-label="E-Mail" class="bg-gray-700 p-3 rounded-full shadow-lg icon-hover fade-in-bottom delay-3">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/new-post.png" alt="Mail" />
+    </a>
+  </div>
+
+  <!-- Navigation mit Logo -->
+  <nav class="flex justify-between items-center px-6 py-3 bg-gray-800 shadow-md">
+    <div class="flex items-center space-x-4">
+      <img src="Logo neu.png" alt="Kesslershots Logo" class="h-24 w-auto">
+    </div>
+    <!-- Mobile Menü Button oben rechts -->
+    <div class="fixed top-4 right-4 z-50">
+      <button onclick="toggleMenu()" class="text-white bg-gray-800 px-5 py-4 text-3xl rounded-lg shadow-lg hover:bg-gray-700 transition-all">☰</button>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Seitenmenü (bereinigt) -->
+  <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform translate-x-full transition-transform duration-300 z-40 shadow-lg">
+    <div class="p-6 flex flex-col space-y-5 text-lg">
+      <button onclick="toggleMenu()" class="text-right text-gray-400 hover:text-white self-end text-2xl">&times;</button>
+      <!-- Home scrollt nach ganz oben -->
+      <a href="#" onclick="return goTop(event)" class="hover:text-gray-300">Home</a>
+      <!-- Referenzen -> Testimonials -->
+      <a href="#testimonials" onclick="toggleMenu()" class="hover:text-gray-300">Referenzen</a>
+      <!-- Preise -->
+      <a href="#preise" onclick="toggleMenu()" class="hover:text-gray-300">Preise</a>
+      <!-- Über uns -->
+      <a href="#about" onclick="toggleMenu()" class="hover:text-gray-300">Über uns</a>
+      <!-- Portfolio -->
+      <a href="#portfolio" onclick="toggleMenu()" class="hover:text-gray-300">Portfolio</a>
+      <!-- Blog -->
+      <a href="blog.html" onclick="toggleMenu()" class="hover:text-gray-300">Blog</a>
+      <!-- Kontakt separat Seite -->
+      <a href="kontakt.html" class="hover:text-gray-300">Kontakt</a>
+    </div>
+  </div>
+
+<!-- Hero-Bereich kompakter -->
+<section class="py-12 px-4 md:py-16 md:px-6">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h1 class="text-xl md:text-2xl font-extrabold mb-4 leading-snug">Euer grosser Tag. <br> EURE Hochzeit – professionell begleitet.</h1>
+      <p class="text-sm md:text-base mb-4 leading-relaxed text-gray-700">
+        Willkommen bei <strong>Kesslershots</strong> – eurem <strong>Fotografen und Hochzeitsfotografen aus St. Gallen</strong> mit Herz und Blick fürs Wesentliche. Ich begleite euch mit Leidenschaft, Kreativität und Erfahrung – egal ob in <strong>Appenzell</strong>, dem <strong>Rheintal</strong>, rund um <strong>den Bodensee</strong> oder sonst wo in der <strong>Ostschweiz</strong>. Neben Hochzeiten bin ich auch als <strong>Familienfotograf</strong> für <strong>Family Shootings</strong>, <strong>Couple Shooting</strong> (Paarshooting) und <strong>Portraits</strong> für euch da.<br><br>
+        Als erfahrener <strong>Hochzeitsfotograf</strong> halte ich eure emotionalsten Augenblicke fest – authentisch, stilvoll und unvergesslich. Ob <strong>standesamtliche Trauung</strong>, <strong>freie Zeremonie</strong> oder <strong>kirchliche Hochzeit</strong>: Ich biete eine unkomplizierte, persönliche Begleitung mit einem Gespür für Emotionen und Details.<br><br>
+        Vertraut auf <strong>moderne Hochzeitsreportagen</strong>, natürliche <strong>Paarfotos</strong> und <strong>Familienfotos</strong> – für <strong>Bilder, die bleiben</strong>.
+      </p>
+      <p class="text-sm md:text-base font-medium text-gray-800 mb-4">Bereit, euren Tag unvergesslich zu machen? <br>Dann lasst uns eure Geschichte gemeinsam erzählen.</p>
+      <a href="#preise" class="inline-block bg-gray-800 text-white px-5 py-2.5 text-sm font-semibold rounded-full shadow-md transition-transform transform hover:scale-105 hover:bg-gray-700 duration-300">Mein Angebot</a>
+      <a href="#about" class="inline-block bg-gray-800 text-white px-5 py-2.5 text-sm font-semibold rounded-full shadow-md transition-transform transform hover:scale-105 hover:bg-gray-700 duration-300 ml-3">Lerne uns kennen</a>
+    </div>
+    <div class="animate-slide-up">
+      <img src="Couple1.jpg" alt="Brautpaar" class="w-full max-h-[420px] object-cover rounded-lg shadow-md">
+    </div>
+  </div>
+</section>
+
+  <!-- Abgesetzter Banner-Bereich -->
+  <section class="relative bg-gray-900 py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-white">Emotionen, Details &amp; echte Momente</h2>
+      <p class="text-lg text-center text-gray-300 mt-4 max-w-2xl mx-auto">So einzigartig wie eure Liebe – diese Aufnahmen erzählen eure Geschichte.</p>
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="aspect-[3/4] h-[800px] reveal-left overflow-hidden rounded-lg shadow-lg">
+          <img src="Hochzeit1.jpeg" alt="Brautpaar 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="aspect-[3/4] h-[800px] reveal-right overflow-hidden rounded-lg shadow-lg">
+          <img src="Hochzeit3.jpeg" alt="Brautpaar 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="relative bg-[#fdfaf6] pt-10 pb-16 -mt-4">
+    <div class="pointer-events-none absolute -top-6 left-0 right-0 h-6 bg-gradient-to-b from-[#fdfaf6] to-transparent"></div>
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Testimonials</h2>
+      <p class="text-gray-600 mt-1 mb-8">Echte Stimmen von glücklichen Paaren</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <div class="bg-[#fdfaf6] p-6 rounded-xl shadow-md hover:shadow-lg transition">
+          <div class="flex justify-center mb-3">
+            <img src="Couple8.jpg" alt="Kunde 1" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover">
+          </div>
+          <div class="flex justify-center mb-3 text-yellow-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+          </div>
+          <p class="text-gray-700 italic text-sm leading-relaxed">“Unsere Hochzeit wurde von Jérôme so wunderschön festgehalten – die Bilder sind voller Emotionen und wir fühlen uns jedes Mal zurückversetzt in diesen besonderen Tag.”</p>
+          <h4 class="mt-4 font-semibold text-gray-900 text-sm">Anna &amp; Tobias</h4>
+          <span class="text-xs text-gray-500">St. Gallen</span>
+        </div>
+        <div class="bg-[#fdfaf6] p-6 rounded-xl shadow-md hover:shadow-lg transition">
+          <div class="flex justify-center mb-3">
+            <img src="Hochzeit2.jpeg" alt="Kunde 2" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover">
+          </div>
+          <div class="flex justify-center mb-3 text-yellow-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+          </div>
+          <p class="text-gray-700 italic text-sm leading-relaxed">“Jérôme hat ein unglaubliches Auge für Details. Unsere Fotos sind nicht nur professionell, sondern erzählen eine Geschichte – unsere Geschichte.”</p>
+          <h4 class="mt-4 font-semibold text-gray-900 text-sm">Laura &amp; Simon</h4>
+          <span class="text-xs text-gray-500">Appenzell</span>
+        </div>
+        <div class="bg-[#fdfaf6] p-6 rounded-xl shadow-md hover:shadow-lg transition">
+          <div class="flex justify-center mb-3">
+            <img src="Hochzeit5.jpeg" alt="Kunde 3" class="w-16 h-16 rounded-full border-4 border-white shadow object-cover">
+          </div>
+          <div class="flex justify-center mb-3 text-yellow-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.756 4.635 1.122 6.545z"/></svg>
+          </div>
+          <p class="text-gray-700 italic text-sm leading-relaxed">“Wir hätten uns keinen besseren Fotografen wünschen können. Jeder Moment ist perfekt eingefangen – natürlich, authentisch und voller Freude.”</p>
+          <h4 class="mt-4 font-semibold text-gray-900 text-sm">Mara &amp; David</h4>
+          <span class="text-xs text-gray-500">Rheintal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preise (mit Anker) -->
+  <section id="preise" class="relative py-20 px-6 bg-center bg-cover bg-fixed" style="background-image: url('./Bruecke.jpeg');">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-6 text-white">Meine Preise</h2>
+
+<!-- ZENTRIERTE TAB-KONTROLLE -->
+<div class="mt-8 mb-12 md:mb-16 flex justify-center">
+  <div class="segmented" role="tablist" aria-label="Preiskategorien">
+    <button id="tab-hochzeit"
+            class="seg-btn is-active"
+            role="tab" aria-selected="true" aria-controls="preise-hochzeit">
+      Hochzeit
+    </button>
+    <button id="tab-couple"
+            class="seg-btn"
+            role="tab" aria-selected="false" aria-controls="preise-couple">
+      Couple Shooting / Family Shooting
+    </button>
+  </div>
+</div>
+
+    <!-- Ansicht: Hochzeit (3 Pakete) -->
+    <div id="preise-hochzeit" role="tabpanel" aria-labelledby="tab-hochzeit"
+         class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Paket 1: Mini (überarbeitet) -->
+<div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:scale-105 text-left relative">
+  <h3 class="text-2xl font-semibold mb-2 text-gray-800">Mini-Paket</h3>
+  <p class="text-gray-600 mb-4">
+    Perfekt für kleine standesamtliche Hochzeiten, intime Zeremonien oder Paare, die sich eine kompakte, aber stilvolle fotografische Begleitung wünschen. Dieses Paket konzentriert sich auf das Wesentliche – die echten Emotionen und wichtigsten Augenblicke eures Tages.
+  </p>
+  <div class="border-t border-gray-300 my-4"></div>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    ✔ ca. 2h fotografische Begleitung<br>
+    ✔ Persönliche Beratung &amp; Planungshilfe<br>
+    ✔ Professionell bearbeitete Bilder<br>
+    ✔ Online-Galerie zur Ansicht &amp; Download<br>
+    ✔ Anfahrt in der Ostschweiz inklusive
+  </p>
+
+  <button onclick="toggleDetails(this)" class="text-sm font-medium text-blue-600 hover:underline mb-4">Mehr erfahren ↓</button>
+  <div class="details hidden text-sm text-gray-700 space-y-4 mb-6">
+    <div class="border-t border-gray-300 my-4"></div>
+    <h4 class="font-semibold text-base">Ablauf:</h4>
+    <p><strong>Kennenlerngespräch:</strong> Wünsche abgleichen und Vertrauen aufbauen.</p>
+    <p><strong>Beratung:</strong> Zeitplanung, Tipps zu Licht, Getting Ready &amp; Ablauf.</p>
+    <p><strong>Reportage:</strong> Diskret &amp; aufmerksam – Emotionen &amp; Details im Fokus.</p>
+    <p><strong>Nachbearbeitung:</strong> Preview meist innert 1–2 Tagen, komplette Galerie innert 1–2 Wochen.</p>
+  </div>
+
+  <div class="border-t border-gray-300 my-4"></div>
+  <div class="mt-6 text-gray-800 font-medium text-base">
+    Überzeugt? Klickt auf „Anfragen“ für ein unverbindliches Kennenlerngespräch.
+  </div>
+
+  <!-- Extras (auf Aufpreis) -->
+  <div class="border-t border-gray-300 my-4"></div>
+  <div class="text-sm text-gray-700">
+    <h4 class="font-semibold text-base mb-2">Extras (auf Aufpreis):</h4>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>Zusatzstunden zur Verlängerung der Reportage</li>
+      <li>Zweiter Fotograf fürs Getting Ready oder Apéro</li>
+      <li>Kurzvideo als Reel (30–60 s)</li>
+      <li>Highlight-Video (ca. 2–3min)</li>
+      <li>Premium-Hochzeitsalbum inkl. Design</li>
+      <li>Express-Bearbeitung der Galerie</li>
+  </div>
+
+  <div class="border-t border-gray-300 my-4"></div>
+  <p class="text-3xl font-bold text-gray-800 mb-6">ab 700 CHF</p>
+  <a href="kontakt.html" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">Jetzt anfragen</a>
+</div>
+
+
+<!-- Paket 2: Bestseller (aktualisiert) -->
+<div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:scale-105 text-left relative">
+  <h3 class="text-2xl font-semibold mb-2 text-gray-800">Bestseller</h3>
+  <p class="text-gray-600 mb-4">
+    Unser beliebtestes Paket – ideal für Paare, die sich eine umfassende Begleitung während der emotionalsten Stunden wünschen. Vom Ja-Wort bis zum Apéro: authentisch, herzlich und detailverliebt.
+  </p>
+  <div class="border-t border-gray-300 my-4"></div>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    ✔ 3–4h fotografische Begleitung<br>
+    ✔ Professionell bearbeitete Bilder<br>
+    ✔ Online-Galerie zur Ansicht &amp; Download<br>
+    ✔ Ausgewählte Prints eurer Hochzeit<br>
+    ✔ Anfahrt in der Ostschweiz inklusive
+  </p>
+
+  <button onclick="toggleDetails(this)" class="text-sm font-medium text-blue-600 hover:underline mb-4">Mehr erfahren ↓</button>
+  <div class="details hidden text-sm text-gray-700 space-y-4 mb-6">
+    <div class="border-t border-gray-300 my-4"></div>
+    <h4 class="font-semibold text-base">Ablauf:</h4>
+    <p><strong>Kennenlerngespraech:</strong> Wünsche abgleichen und Vertrauen aufbauen.</p>
+    <p><strong>Beratung:</strong> Zeitplanung, Tipps zu Licht, Getting Ready &amp; Ablauf.</p>
+    <p><strong>Reportage:</strong> Diskret &amp; aufmerksam – Emotionen &amp; Details im Fokus.</p>
+    <p><strong>Nachbearbeitung:</strong> Preview meist innert 1–2 Tagen, komplette Galerie innert 1–2 Wochen.</p>
+  </div>
+
+  <div class="border-t border-gray-300 my-4"></div>
+  <div class="mt-6 text-gray-800 font-medium text-base">
+    Fragen? Schreib mir – ich berate euch gern.
+  </div>
+
+  <!-- Extras (auf Aufpreis) -->
+  <div class="border-t border-gray-300 my-4"></div>
+  <div class="text-sm text-gray-700">
+    <h4 class="font-semibold text-base mb-2">Extras (auf Aufpreis):</h4>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>Zusatzstunden zur Verlängerung der Reportage</li>
+      <li>Zweiter Fotograf fürs Getting Ready oder Apéro</li>
+      <li>Kurzvideo als Reel (30–60 s)</li>
+      <li>Highlight-Video (ca. 2–3min)</li>
+      <li>Premium-Hochzeitsalbum inkl. Design</li>
+      <li>Express-Bearbeitung der Galerie</li>
+  </div>
+
+  <div class="border-t border-gray-300 my-4"></div>
+  <p class="text-3xl font-bold text-gray-800 mb-6">ab 1'900 CHF</p>
+  <a href="kontakt.html" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">Jetzt anfragen</a>
+</div>
+
+      <!-- Paket 3: Rundum-Sorglos (aktualisiert) -->
+<div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:scale-105 text-left relative">
+  <h3 class="text-2xl font-semibold mb-2 text-gray-800">Rundum-Sorglos</h3>
+  <p class="text-gray-600 mb-4">
+    Für Paare, die ihren Hochzeitstag in seiner ganzen Schönheit dokumentieren moechten – vom Getting Ready bis zum letzten Tanz. Eine Begleitung durch alle Details &amp; Begegnungen.
+  </p>
+  <div class="border-t border-gray-300 my-4"></div>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    ✔ Fotografische Begleitung über den ganzen Tag hinweg<br>
+    ✔ Professionell bearbeitete Bilder<br>
+    ✔ Gratis Couple Shooting inbegriffen<br>
+    ✔ Online-Galerie zur Ansicht &amp; Download<br>
+    ✔ Ausgewählte Prints eurer Hochzeit<br>
+    ✔ Anfahrt in der Ostschweiz inklusive
+  </p>
+
+  <button onclick="toggleDetails(this)" class="text-sm font-medium text-blue-600 hover:underline mb-4">Mehr erfahren ↓</button>
+  <div class="details hidden text-sm text-gray-700 space-y-4 mb-6">
+    <div class="border-t border-gray-300 my-4"></div>
+    <h4 class="font-semibold text-base">Ablauf:</h4>
+    <p><strong>Kennenlerngespraech:</strong> Wünsche abgleichen und Vertrauen aufbauen.</p>
+    <p><strong>Beratung:</strong> Detaillierte Timeline inkl. Lichtfenster, Gruppenfotos &amp; Pufferzeiten.</p>
+    <p><strong>Reportage:</strong> Unauffaellig &amp; praesent – echte Momente, Emotionen &amp; feine Details.</p>
+    <p><strong>Nachbearbeitung:</strong> Preview meist innert 1–2 Tagen, komplette Galerie innert 1–2 Wochen.</p>
+  </div>
+
+  <div class="border-t border-gray-300 my-4"></div>
+  <div class="mt-6 text-gray-800 font-medium text-base">
+    Ich erzähle euren Tag – ungestellt, echt &amp; zeitlos.
+  </div>
+
+  <!-- Extras (auf Aufpreis) -->
+  <div class="border-t border-gray-300 my-4"></div>
+  <div class="text-sm text-gray-700">
+    <h4 class="font-semibold text-base mb-2">Extras (auf Aufpreis):</h4>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>Zweiter Fotograf fürs Getting Ready oder Apéro</li>
+      <li>Kurzvideo als Reel (30–60 s)</li>
+      <li>Highlight-Video (ca. 2–3min)</li>
+      <li>Premium-Hochzeitsalbum inkl. Design</li>
+      <li>Express-Bearbeitung der Galerie</li>
+  </div>
+
+  <div class="border-t border-gray-300 my-4"></div>
+  <p class="text-3xl font-bold text-gray-800 mb-6">ab 3'500 CHF</p>
+  <a href="kontakt.html" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">Jetzt anfragen</a>
+</div>
+</div>
+
+
+<!-- Ansicht: Couple/Family (2 Pakete) -->
+<div id="preise-couple" role="tabpanel" aria-labelledby="tab-couple"
+     class="hidden grid grid-cols-1 md:grid-cols-2 gap-12">
+
+
+  <!-- Paket A: Couple Shooting (überarbeitet & korrigiert) -->
+  <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:scale-105 text-left relative">
+    <h3 class="text-2xl font-semibold mb-2 text-gray-800">Couple Shooting (Region Ostschweiz)</h3>
+    <p class="text-gray-600 mb-4">
+      Authentische Paarfotos in natürlichem Licht – ob City-Vibes, Bodensee oder Appenzeller Hügel. Locker, herzlich &amp; modern.
+    </p>
+    <div class="border-t border-gray-300 my-4"></div>
+    <p class="text-gray-700 leading-relaxed mb-4">
+      ✔ 60–90 Min Shooting<br>
+      ✔ Location- &amp; Outfit-Guidance<br>
+      ✔ Online-Galerie zur Ansicht &amp; Download<br>
+      ✔ Anfahrt in der Ostschweiz inklusive
+    </p>
+
+    <button onclick="toggleDetails(this)" class="text-sm font-medium text-blue-600 hover:underline mb-4">Mehr erfahren ↓</button>
+    <div class="details hidden text-sm text-gray-700 space-y-4 mb-6">
+      <div class="border-t border-gray-300 my-4"></div>
+      <h4 class="font-semibold text-base">Ablauf:</h4>
+      <p><strong>Erstgespräch (kostenlos):</strong> Kurz eure Wünsche, Stimmung &amp; Styling abgleichen.</p>
+      <p><strong>Planung:</strong> Ich empfehle passende Spots (ich kenne viele schöne Ecken), Zeiten &amp; Looks – inkl. Wetter-Backups.</p>
+      <p><strong>Shooting:</strong> Ich führe euch entspannt durchs Shooting, gebe leichtes Coaching&nbsp;/ Posing und sorge für natürliche Momente.</p>
+      <p><strong>Nachbearbeitung &amp; Galerie:</strong> Sorgfältige Bearbeitung in meinem Look, Online-Galerie zum Teilen &amp; Download.</p>
+
+      <div class="border-t border-gray-300 my-4"></div>
+      <p class="font-medium">Klingt gut? <a href="kontakt.html" class="text-blue-600 hover:underline">Lasst uns ein kostenloses Erstgespräch machen</a> – ich freue mich auf euch!</p>
+
+      <h4 class="font-semibold text-base mt-6">Optionen / Ideen:</h4>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Golden-Hour-Upgrade</li>
+        <li>Zweite Location oder kurzer Locationwechsel</li>
+        <li>Outfitwechsel (z. B. casual → chic)</li>
+        <li>Feine Requisiten (Decke, Blumen, Prosecco …)</li>
+        <li>Fine-Art-Prints oder Mini-Album</li>
+        <li>Express-Bearbeitung der Galerie</li>
+      </ul>
+    </div>
+
+    <div class="border-t border-gray-300 my-4"></div>
+    <p class="text-3xl font-bold text-gray-800 mb-6">ab 250 CHF</p>
+    <a href="kontakt.html" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">Jetzt anfragen</a>
+  </div>
+
+  <!-- Paket B: Family Shooting (überarbeitet & korrigiert) -->
+  <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:scale-105 text-left relative">
+    <h3 class="text-2xl font-semibold mb-2 text-gray-800">Family Shooting</h3>
+    <p class="text-gray-600 mb-4">
+      Lebendige Familienmomente – spielerisch, echt und ungezwungen. Zuhause oder draussen, so wie ihr euch wohlfühlt.
+    </p>
+    <div class="border-t border-gray-300 my-4"></div>
+    <p class="text-gray-700 leading-relaxed mb-4">
+      ✔ 60–90 Min Shooting<br>
+      ✔ Location- & Outfit-Guidance<br>
+      ✔ Online-Galerie zur Ansicht &amp; Download<br>
+      ✔ Anfahrt in der Ostschweiz inklusive
+    </p>
+
+    <button onclick="toggleDetails(this)" class="text-sm font-medium text-blue-600 hover:underline mb-4">Mehr erfahren ↓</button>
+    <div class="details hidden text-sm text-gray-700 space-y-4 mb-6">
+      <div class="border-t border-gray-300 my-4"></div>
+      <h4 class="font-semibold text-base">Ablauf:</h4>
+      <p><strong>Erstgespräch (kostenlos):</strong> Wir klären kurz Ort, Zeit, Stimmung &amp; besondere Wünsche.</p>
+      <p><strong>Planung:</strong> Ich schlage kindgerechte Spots vor (Kenntnis schöner Locations) und gebe Outfit- &amp; Timing-Tipps.</p>
+      <p><strong>Shooting:</strong> Locker geführt, mit kleinen Spielen &amp; Pausen – echte Nähe statt steifer Posen.</p>
+      <p><strong>Nachbearbeitung &amp; Galerie:</strong> Liebevolle Bearbeitung, Online-Galerie zum Teilen &amp; Download.</p>
+
+      <div class="border-t border-gray-300 my-4"></div>
+      <p class="font-medium">Bereit für schöne Familienbilder? <a href="kontakt.html" class="text-blue-600 hover:underline">Lasst uns ein kostenloses Erstgespräch machen</a> – ich berate euch gern.</p>
+
+      <h4 class="font-semibold text-base mt-6">Optionen / Ideen:</h4>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Home-Session (bei euch zuhause)</li>
+        <li>Outdoor-Session mit Picknick / Decke</li>
+        <li>Generationen-Shooting (Grosseltern dazu)</li>
+        <li>Golden-Hour-Upgrade</li>
+        <li>Zweite Location (z. B. kurzer Abstecher zum Spielplatz)</li>
+        <li>Fine-Art-Prints, Holzrahmen oder Familienalbum</li>
+        <li>Express-Bearbeitung der Galerie</li>
+      </ul>
+    </div>
+
+    <div class="border-t border-gray-300 my-4"></div>
+    <p class="text-3xl font-bold text-gray-800 mb-6">ab 350 CHF</p>
+    <a href="kontakt.html" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">Jetzt anfragen</a>
+  </div>
+
+</div>
+</div>
+</section>
+
+ <!-- Über uns / Vorstellung mit organischem Blob -->
+<section id="about" class="bg-[#fdfaf6] py-20 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+    <div class="lg:col-span-2 about-blob-wrap">
+      <div class="about-blob">
+        <img src="Aline2.JPG" alt="Jérôme & Aline – euer Foto-Team aus St. Gallen">
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <span class="inline-block px-3 py-1 rounded-full bg-white text-gray-700 text-sm shadow">Über uns</span>
+      <h2 class="mt-4 text-3xl md:text-4xl font-bold text-gray-900">Wir sind Jérôme &amp; Aline</h2>
+
+      <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+        Wir sind Jérôme und Aline – euer eingespieltes Foto-Team aus St. Gallen. Als
+        <strong>Hochzeitsfotograf in der Ostschweiz</strong> begleiten wir Paare und Familien in
+        <strong>Appenzell</strong>, dem <strong>Rheintal</strong> und rund um den <strong>Bodensee</strong>.
+        Unser Stil: <strong>natürliche Hochzeitsreportagen</strong>, zeitlose <strong>Portraits</strong> sowie
+        authentische <strong>Paarshootings</strong> und <strong>Familienfotos</strong>, die eure Geschichte echt erzählen.
+      </p>
+
+      <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+        Von der ersten Anfrage bis zur fertigen Online-Galerie seid ihr bei uns in guten Händen:
+        persönliche Beratung, Timeline-Planung, Location-Check und professionelle Bildbearbeitung.
+        Mit Gespür für <strong>Licht, Timing und Details</strong> entstehen Bilder, die bleiben –
+        modern, stilvoll und mit Herz. Du hast einen <strong>speziellen Wunsch</strong> oder wirst bei den
+        <a href="#preise" class="underline font-medium">Paketen</a> nicht fündig? <strong>Wir finden immer eine individuelle Lösung.</strong>
+      </p>
+
+      <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-gray-800">
+        <li class="flex items-start">
+          <svg class="w-5 h-5 mt-1 mr-3 text-gray-900" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 9.435a1 1 0 011.414-1.414l3.223 3.223 6.657-6.657a1 1 0 011.414 0z"/>
+          </svg>Natürliche Reportagen &amp; zeitlose Portraits
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 mt-1 mr-3 text-gray-900" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 9.435a1 1 0 011.414-1.414l3.223 3.223 6.657-6.657a1 1 0 011.414 0z"/>
+          </svg>Ostschweiz: St. Gallen, Rheintal, Appenzell &amp; Bodensee
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 mt-1 mr-3 text-gray-900" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 9.435a1 1 0 011.414-1.414l3.223 3.223 6.657-6.657a1 1 0 011.414 0z"/>
+          </svg>Unkompliziert &amp; herzlich – wir passen uns euch an
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 mt-1 mr-3 text-gray-900" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 9.435a1 1 0 011.414-1.414l3.223 3.223 6.657-6.657a1 1 0 011.414 0z"/>
+          </svg>Fokus auf Emotionen &amp; Details
+        </li>
+      </ul>
+
+      <blockquote class="mt-6 italic text-gray-700 border-l-4 border-gray-300 pl-4">
+        „Unsere Bilder sollen sich wie euer Tag anfühlen – echt, warm und voller Leben.“
+      </blockquote>
+
+      <!-- CTA Buttons -->
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <!-- Primärer CTA: Anfrageformular -->
+        <a href="kontakt.html"
+           class="inline-flex items-center bg-gray-800 text-white px-7 py-3 rounded-full font-semibold shadow-md hover:bg-gray-700 transform hover:scale-105 transition">
+          Jetzt Kennenlerngespräch vereinbaren
+        </a>
+        <!-- Sekundär: Zu den Paketen/Angeboten -->
+        <a href="#preise"
+           class="inline-flex items-center bg-white text-gray-900 px-6 py-3 rounded-full font-semibold shadow hover:shadow-md border border-gray-200 hover:bg-gray-50 transition">
+          Mein Angebot entdecken
+        </a>
+      </div>
+
+      <!-- Direktkontakt / Social Icons -->
+      <div class="mt-5">
+        <p class="text-sm text-gray-600 mb-2">Oder schreib uns direkt:</p>
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/41797511754" target="_blank" rel="noopener" aria-label="WhatsApp"
+             class="bg-green-500 p-3 rounded-full shadow hover:shadow-md transition">
+            <img src="https://img.icons8.com/ios-filled/22/ffffff/whatsapp.png" alt="WhatsApp">
+          </a>
+          <a href="tel:+41797511754" aria-label="Telefon"
+             class="bg-blue-600 p-3 rounded-full shadow hover:shadow-md transition">
+            <img src="https://img.icons8.com/ios-filled/22/ffffff/phone.png" alt="Telefon">
+          </a>
+          <a href="mailto:info@kesslershots.ch" aria-label="E-Mail"
+             class="bg-gray-700 p-3 rounded-full shadow hover:shadow-md transition">
+            <img src="https://img.icons8.com/ios-filled/22/ffffff/new-post.png" alt="E-Mail">
+          </a>
+          <a href="https://instagram.com/kesslerwedding" target="_blank" rel="noopener" aria-label="Instagram"
+             class="bg-pink-600 p-3 rounded-full shadow hover:shadow-md transition">
+            <img src="https://img.icons8.com/ios-filled/22/ffffff/instagram-new.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Grosses Einzelbild -->
+  <section class="py-20 bg-white">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="overflow-hidden rounded-xl shadow-2xl h-[800px]"><img src="Hochzeit7.jpeg" alt="Hochzeitsbild" class="w-full h-full object-cover"></div>
+    </div>
+  </section>
+
+  <div class="border-t-2 border-gray-300 w-3/4 mx-auto my-20"></div>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="py-20 bg-[#fdfaf6]">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800">Portfolio</h2>
+      <p class="text-lg text-center text-gray-600 mt-3 max-w-2xl mx-auto">Einblicke in echte Hochzeiten – Emotionen, Details und ungestellte Momente.</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit1.jpeg" alt="Hochzeit 1" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit2.jpeg" alt="Hochzeit 2" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit3.jpeg" alt="Hochzeit 3" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit4.jpeg" alt="Hochzeit 4" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit5.jpeg" alt="Hochzeit 5" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit6.jpeg" alt="Hochzeit 6" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit7.jpeg" alt="Hochzeit 7" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit8.jpeg" alt="Hochzeit 8" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit9.jpeg" alt="Hochzeit 9" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Hochzeit10.jpeg" alt="Hochzeit 10" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Couple8.jpg" alt="Couple 8" class="w-full h-72 object-cover"></figure>
+        <figure class="overflow-hidden rounded-xl shadow-md"><img src="Bruecke.jpeg" alt="Brücke" class="w-full h-72 object-cover"></figure>
+      </div>
+    </div>
+  </section>
+
+<!-- Blog-Preview (3 neueste) -->
+<section id="blog" class="py-16 bg-white">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800">Aktuelle Blogbeiträge</h2>
+    <p class="text-base md:text-lg text-center text-gray-600 mt-3 max-w-2xl mx-auto">
+      Neueste Stories rund um Hochzeiten, Tipps & Behind-the-Scenes.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+      <!-- 1) Hochzeitslocations -->
+      <article class="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
+        <a href="blog/hochzeitslocations-ostschweiz/index.html" class="block">
+          <img src="Blog/hochzeitslocations-ostschweiz/Schloss Reichenau.jpg" alt="Hochzeitslocations Ostschweiz" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <div class="flex items-center gap-2 text-xs text-gray-600">
+              <span class="px-2 py-1 bg-gray-100 rounded-full">Hochzeit</span>
+              <span class="px-2 py-1 bg-gray-100 rounded-full">Tipps</span>
+              <span class="ml-auto">Mai 2025</span>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-gray-900 group-hover:underline">Die 10 schönsten Hochzeitslocations in der Ostschweiz</h3>
+            <p class="mt-2 text-sm text-gray-600">Traumhafte Orte in St. Gallen, Appenzell und Rheintal…</p>
+            <span class="inline-block mt-3 text-sm font-medium text-gray-900">Weiterlesen →</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 2) häufige Fehler -->
+      <article class="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
+        <a href="blog/5 Fehler/index.html" class="block">
+          <img src="Hochzeit2.jpeg" alt="häufige Fehler" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <div class="flex items-center gap-2 text-xs text-gray-600">
+              <span class="px-2 py-1 bg-gray-100 rounded-full">Hochzeit</span>
+              <span class="px-2 py-1 bg-gray-100 rounded-full">Tipps</span>
+              <span class="ml-auto">Mai 2025</span>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-gray-900 group-hover:underline">Die 5 häufigsten Fehler bei Hochzeitsfotos</h3>
+            <p class="mt-2 text-sm text-gray-600">Fehler bei Hochzeitsfotos – und wie ihr sie vermeidet.</p>
+            <span class="inline-block mt-3 text-sm font-medium text-gray-900">Weiterlesen →</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 3) Golden Hour -->
+      <article class="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
+        <a href="blog/Golden Hour/index.html" class="block">
+          <img src="Hochzeit5.jpeg" alt="Warum kleine Details grosse Wirkung haben" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <div class="flex items-center gap-2 text-xs text-gray-600">
+              <span class="px-2 py-1 bg-gray-100 rounded-full">Hochzeit</span>
+              <span class="ml-auto">Apr 2025</span>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-gray-900 group-hover:underline">Die beste Uhrzeit für natürliche, zeitlose Hochzeitsfotos</h3>
+            <p class="mt-2 text-sm text-gray-600">Warum die Golden Hour für Hochzeitsfotos unschlagbar ist 🌅.</p>
+            <span class="inline-block mt-3 text-sm font-medium text-gray-900">Weiterlesen →</span>
+          </div>
+        </a>
+      </article>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="blog.html" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">
+        Alle Blogbeiträge ansehen
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-white py-16 px-6" id="faq">
+  <h2 class="text-3xl font-semibold text-center mb-12">FAQ – Häufig gestellte Fragen</h2>
+  <div class="max-w-4xl mx-auto space-y-4">
+
+    <!-- Frage 1 -->
+    <details class="bg-gray-100 p-4 rounded-md shadow-sm">
+      <summary class="cursor-pointer text-lg font-medium">Wie viel kostet ein Hochzeitsfotograf in der Ostschweiz?</summary>
+      <p class="mt-2 text-gray-700">
+        Die Preise für <strong>Hochzeitsfotografie in St. Gallen, Appenzell und dem Rheintal</strong> starten bei mir bereits ab <strong>700 CHF</strong> für kleine standesamtliche Hochzeiten. 
+        Für eine ganztägige <a href="#preise" class="text-blue-600 hover:underline">Hochzeitsreportage</a> mit allen Highlights beginnt mein <em>Rundum-Sorglos-Paket</em> ab 3’500 CHF. 
+        Transparente Preise findest du direkt in meinen <a href="#preise" class="text-blue-600 hover:underline">Paketen</a>.
+      </p>
+    </details>
+
+    <!-- Frage 2 -->
+    <details class="bg-gray-100 p-4 rounded-md shadow-sm">
+      <summary class="cursor-pointer text-lg font-medium">Wie läuft der Buchungsprozess ab?</summary>
+      <p class="mt-2 text-gray-700">
+        Nach eurer Anfrage vereinbaren wir ein <strong>kostenloses Erstgespräch</strong> – telefonisch oder persönlich. 
+        Dort besprechen wir eure Wünsche, den Ablauf und ich gebe Tipps zur <em>Timeline</em> und zu den besten Foto-Spots. 
+        Anschliessend erhaltet ihr eine individuelle Offerte und könnt euch euer gewünschtes <a href="#preise" class="text-blue-600 hover:underline">Paket</a> sichern. 
+        👉 <a href="kontakt.html" class="text-blue-600 hover:underline">Jetzt Kennenlerngespräch vereinbaren</a>.
+      </p>
+    </details>
+
+    <!-- Frage 3 -->
+    <details class="bg-gray-100 p-4 rounded-md shadow-sm">
+      <summary class="cursor-pointer text-lg font-medium">Wie viele Bilder bekommen wir und wie schnell?</summary>
+      <p class="mt-2 text-gray-700">
+        Ich lege Wert auf Qualität statt Masse – ihr erhaltet alle <strong>professionell bearbeiteten Fotos</strong>, die eure Geschichte authentisch erzählen. 
+        Eine kleine Vorschau bekommt ihr oft schon <strong>1–2 Tage nach der Hochzeit</strong>, die komplette Galerie in der Regel <strong>innerhalb von 1–2 Wochen</strong>. 
+        Die Bilder stehen euch in einer passwortgeschützten <em>Online-Galerie</em> in voller Auflösung zur Verfügung – zum Teilen und Download.
+      </p>
+    </details>
+
+    <!-- Frage 4 -->
+    <details class="bg-gray-100 p-4 rounded-md shadow-sm">
+      <summary class="cursor-pointer text-lg font-medium">Fotografierst du nur Hochzeiten oder auch Paare & Familien?</summary>
+      <p class="mt-2 text-gray-700">
+        Neben Hochzeiten biete ich auch <a href="#preise-couple" class="text-blue-600 hover:underline">Couple Shootings</a> und 
+        <a href="#preise-couple" class="text-blue-600 hover:underline">Family Shootings</a> in der Ostschweiz an. 
+        Ob <strong>romantische Paarfotos am Bodensee</strong> oder <strong>lebendige Familienmomente in Appenzell</strong> – ich begleite euch mit Herz und Erfahrung. 
+        Auch diese Shootings starten preislich fair: ab 250 CHF für Paare und ab 350 CHF für Familien.
+      </p>
+    </details>
+
+    <!-- Frage 5 -->
+    <details class="bg-gray-100 p-4 rounded-md shadow-sm">
+      <summary class="cursor-pointer text-lg font-medium">Was passiert bei schlechtem Wetter?</summary>
+      <p class="mt-2 text-gray-700">
+        Keine Sorge: auch Regen oder Wolken können magische Bilder zaubern. Ich kenne viele überdachte oder wettergeschützte Locations in St. Gallen, Appenzell und Umgebung. 
+        Bei <a href="#preise-couple" class="text-blue-600 hover:underline">Paarshootings</a> oder <a href="#preise-couple" class="text-blue-600 hover:underline">Family Shootings</a> können wir flexibel einen neuen Termin finden. 
+        Für Hochzeiten gilt: ich bin immer da – egal ob Sonne oder Regen – und halte eure Geschichte authentisch und stimmungsvoll fest.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+
+<!-- Footer (angepasst mit Datenschutz-Link) -->
+<footer class="bg-gray-800 text-white py-12 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="space-y-4">
+      <img src="Logo neu.png" alt="Kesslershots Logo" class="h-16 w-auto">
+      <p class="text-sm text-gray-400">Eure Erinnerungen. Stilvoll verewigt.</p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="#" onclick="return goTop(event)" class="hover:text-white">Home</a></li>
+        <li><a href="#testimonials" class="hover:text-white">Referenzen</a></li>
+        <li><a href="#preise" class="hover:text-white">Preise</a></li>
+        <li><a href="#about" class="hover:text-white">Über uns</a></li>
+        <li><a href="#portfolio" class="hover:text-white">Portfolio</a></li>
+        <li><a href="blog.html" class="hover:text-white">Blog</a></li>
+        <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
+        <li><a href="Datenschutzerklärung.html" class="hover:text-white">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="mailto:kontakt@kesslershots.ch" class="hover:text-white">E-Mail schreiben</a></li>
+        <li><a href="https://wa.me/41791234567" target="_blank" class="hover:text-white">WhatsApp</a></li>
+        <li><a href="https://instagram.com/kesslerwedding" target="_blank" class="hover:text-white">Instagram</a></li>
+        <li><a href="https://facebook.com/kesslershots" target="_blank" class="hover:text-white">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center text-gray-500 text-sm mt-10">
+    &copy; 2025 Kesslershots. Alle Rechte vorbehalten. · <a href="Datenschutzerklärung.html" class="hover:text-white">Datenschutzerklärung</a>
+  </div>
+</footer>
+
+
+<script>
+  (function(){
+    const tabWedding = document.getElementById('tab-hochzeit');
+    const tabCouple  = document.getElementById('tab-couple');
+    const wrapWedding = document.getElementById('preise-hochzeit');
+    const wrapCouple  = document.getElementById('preise-couple');
+
+    function activate(which){
+      const isWedding = (which === 'wedding');
+
+      tabWedding.classList.toggle('is-active', isWedding);
+      tabWedding.setAttribute('aria-selected', String(isWedding));
+      tabCouple.classList.toggle('is-active', !isWedding);
+      tabCouple.setAttribute('aria-selected', String(!isWedding));
+
+      wrapWedding.classList.toggle('hidden', !isWedding);
+      wrapCouple.classList.toggle('hidden', isWedding);
+
+      // dezente Swipe-Animation
+      if(isWedding){
+        wrapWedding.classList.add('swipe-enter-left');
+        wrapCouple.classList.remove('swipe-enter-right');
+      }else{
+        wrapCouple.classList.add('swipe-enter-right');
+        wrapWedding.classList.remove('swipe-enter-left');
+      }
+    }
+
+tabWedding.addEventListener('click', ()=>activate('wedding'));
+tabCouple .addEventListener('click', ()=>activate('couple'));
+
+// ✅ Initialzustand setzen:
+activate('wedding');
+})();
+
+</script>
+
+</body>
+</html>
