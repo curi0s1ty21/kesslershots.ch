@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hochzeitsfotograf Preise &amp; Offerte | Kesslershots – St. Gallen &amp; Ostschweiz</title>
+  <link href="/assets/vendor/tailwind-2.2.19.min.css" rel="stylesheet">
+  <link href="/assets/site.css" rel="stylesheet">
+  <script src="/assets/motion.js" defer></script>
+  <meta name="description" content="Was kostet ein Hochzeitsfotograf in der Ostschweiz? Stellt eure Hochzeitsreportage, euer Couple-, Family- oder Verlobungsshooting zusammen und seht sofort den unverbindlichen Richtpreis." />
+  <link rel="icon" type="image/png" href="/Logo.jpg" sizes="32x32">
+  <style>
+    body{font-family:'Dosis',sans-serif}
+    .card{box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    .label{display:block;font-weight:600;margin-bottom:.35rem}
+    .req:after{content:' *';color:#ef4444}
+    .field{width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.5rem 1rem;background:#fff}
+    .field:focus{outline:none;box-shadow:0 0 0 2px #1f2937}
+
+    /* Segmented control, as in the pricing section of the home page. */
+    .segmented{display:inline-flex;gap:6px;padding:6px;border-radius:9999px;background:rgba(31,41,55,.88);backdrop-filter:saturate(160%) blur(8px);-webkit-backdrop-filter:saturate(160%) blur(8px);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+    .seg-btn{min-width:8rem;padding:.65rem 1.1rem;border-radius:9999px;font-weight:700;text-align:center;color:rgba(255,255,255,.9);transition:all .18s ease;line-height:1.1}
+    .seg-btn:hover{background:rgba(255,255,255,.14)}
+    .seg-btn.is-active{background:#fff;color:#1f2937;box-shadow:0 10px 22px rgba(0,0,0,.25)}
+    @media (max-width:480px){.seg-btn{min-width:0;padding:.6rem .7rem;font-size:.9rem}}
+    @media (max-width:400px){.segmented{flex-wrap:wrap;justify-content:center;border-radius:1.5rem}}
+
+    .step-pill{display:inline-block;padding:.25rem .75rem;border-radius:9999px;background:#fdfaf6;color:#374151;font-size:.875rem;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+    .package{position:relative;display:block;cursor:pointer;background:#fff;border:2px solid #e5e7eb;border-radius:1rem;padding:1.25rem;transition:border-color .18s ease,box-shadow .18s ease}
+    .package:hover{box-shadow:0 10px 25px rgba(0,0,0,.1)}
+    .package.is-selected{border-color:#1f2937;box-shadow:0 14px 30px rgba(0,0,0,.14)}
+    .package:focus-within{outline:2px solid #1f2937;outline-offset:2px}
+    .package-badge{display:inline-block;margin-bottom:.5rem;padding:.1rem .6rem;border-radius:9999px;background:#1f2937;color:#fff;font-size:.75rem;font-weight:600}
+
+    .option{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;padding:.85rem 1rem;border:1px solid #e5e7eb;border-radius:.75rem;background:#fff;transition:border-color .18s ease,background .18s ease}
+    label.option{cursor:pointer}
+    .option:hover{border-color:#9ca3af}
+    .option.is-selected{border-color:#1f2937;background:#fdfaf6}
+    .option.is-included{cursor:default;opacity:.8}
+    .choice-input{width:1.25rem;height:1.25rem;accent-color:#1f2937;flex:none}
+
+    .stepper{display:inline-flex;align-items:center;gap:.25rem}
+    .stepper button{width:2rem;height:2rem;border-radius:9999px;background:#1f2937;color:#fff;font-weight:700;line-height:1;transition:background .18s ease}
+    .stepper button:hover:not(:disabled){background:#374151}
+    .stepper button:disabled{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+    .stepper output{min-width:1.75rem;text-align:center;font-weight:700}
+
+    .chip{cursor:pointer;padding:.35rem .9rem;border:1px solid #d1d5db;border-radius:9999px;background:#fff;font-size:.95rem;transition:all .18s ease}
+    .chip:hover{border-color:#9ca3af}
+    .chip.is-selected{background:#1f2937;border-color:#1f2937;color:#fff}
+    .chip:focus-within{outline:2px solid #1f2937;outline-offset:2px}
+
+    /* Small screens: text on its own line, price and control below it. */
+    @media (max-width:639px){
+      .option{justify-content:space-between}
+      .option > span:first-child{flex:1 1 100%}
+    }
+
+    /* Starts below the fixed menu button and scrolls itself on low screens. */
+    @media (min-width:1024px){#summary{top:6rem;max-height:calc(100vh - 7rem);overflow-y:auto}}
+
+    /* Room for the fixed total at the bottom of small screens. */
+    @media (max-width:1023px){body{padding-bottom:4.5rem}}
+
+    @media print{
+      @page{margin:1.5cm}
+      body{padding:0;background:#fff}
+      .no-print{display:none !important}
+      #print-head{display:block !important}
+      #offer-main{padding:0;background:#fff !important}
+      #offer-main > div{display:block;max-width:none}
+      #summary{position:static;box-shadow:none;padding:0;max-height:none;overflow:visible;border-radius:0}
+    }
+  </style>
+  <script>
+    function toggleMenu(){const m=document.getElementById('sideMenu');m&&m.classList.toggle('translate-x-full');}
+  </script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <nav class="no-print flex justify-between items-center px-6 py-3 bg-gray-800 shadow-md">
+    <div class="flex items-center space-x-4">
+      <a href="index.html" class="inline-flex items-center"><picture><source type="image/avif" srcset="/assets/img/logo-neu-96.avif 96w, /assets/img/logo-neu-192.avif 192w, /assets/img/logo-neu-288.avif 288w" sizes="80px"><source type="image/webp" srcset="/assets/img/logo-neu-96.webp 96w, /assets/img/logo-neu-192.webp 192w, /assets/img/logo-neu-288.webp 288w" sizes="80px"><img src="/assets/img/logo-neu-192.png" alt="Kesslershots Logo" class="h-20 w-auto" width="1024" height="1024" decoding="async"></picture></a>
+    </div>
+    <div class="fixed top-4 right-4 z-50">
+      <button onclick="toggleMenu()" aria-label="Menü" class="text-white bg-gray-800 px-5 py-3 text-2xl rounded-lg shadow-lg hover:bg-gray-700 transition-all">☰</button>
+    </div>
+  </nav>
+
+  <div id="sideMenu" class="no-print fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform translate-x-full transition-transform duration-300 z-40 shadow-lg">
+    <div class="p-6 flex flex-col space-y-5 text-lg">
+      <button onclick="toggleMenu()" aria-label="Menü schliessen" class="text-right text-gray-400 hover:text-white self-end text-2xl">&times;</button>
+      <a href="index.html" class="hover:text-gray-300">Home</a>
+      <a href="index.html#testimonials" class="hover:text-gray-300">Referenzen</a>
+      <a href="index.html#preise" class="hover:text-gray-300">Preise</a>
+      <a href="offerte.html" class="hover:text-gray-300">Offerte zusammenstellen</a>
+      <a href="index.html#about" class="hover:text-gray-300">Über uns</a>
+      <a href="index.html#portfolio" class="hover:text-gray-300">Portfolio</a>
+      <a href="kontakt.html" class="hover:text-gray-300">Kontakt</a>
+    </div>
+  </div>
+
+  <!-- Only on paper: the sender of the offer. -->
+  <div id="print-head" class="hidden mb-8">
+    <p class="text-2xl font-bold">Kesslershots – Richtofferte</p>
+    <p class="text-sm text-gray-600">Strenglenstrasse 3, 9424 Rheineck · +41 79 751 17 54 · info@kesslershots.ch · kesslershots.ch</p>
+    <p class="text-sm text-gray-600">Erstellt am <span id="print-date"></span></p>
+  </div>
+
+  <section id="offerte-hero" class="no-print relative py-16 px-6 bg-center bg-cover">
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-white">Stellt euch eure Offerte zusammen</h1>
+      <p class="mt-3 text-lg text-white">Wählt aus, was zu euch passt. Der Preis rechnet sofort mit, unverbindlich und ohne Anmeldung.</p>
+      <div class="mt-8 flex justify-center">
+        <div class="segmented" role="tablist" aria-label="Anlass">
+          <button type="button" class="seg-btn" role="tab" data-kind="hochzeit">Hochzeit</button>
+          <button type="button" class="seg-btn" role="tab" data-kind="couple">Couple</button>
+          <button type="button" class="seg-btn" role="tab" data-kind="family">Family</button>
+          <button type="button" class="seg-btn" role="tab" data-kind="verlobung">Verlobung</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <noscript>
+    <p class="max-w-3xl mx-auto p-6 text-center">Der Konfigurator braucht JavaScript. Schreibt mir gerne direkt über das <a class="text-blue-600" href="kontakt.html">Kontaktformular</a>.</p>
+  </noscript>
+
+  <!-- Einleitung: Text für Suchmaschinen und Hinweis auf den Richtpreis -->
+  <section class="no-print px-4 md:px-6 pt-12" style="background-color:#fdfaf6">
+    <div class="max-w-4xl mx-auto text-center text-gray-700">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Was kostet ein Hochzeitsfotograf in der Ostschweiz?</h2>
+      <p class="mt-4 leading-relaxed">
+        Mit unserem Offertenkonfigurator seht ihr in wenigen Klicks, was eure <strong>Hochzeitsfotografie in St. Gallen, im Rheintal, in Appenzell, im Thurgau oder am Bodensee</strong> kostet.
+        Wählt euer Paket für die <strong>Hochzeitsreportage</strong> – von der standesamtlichen Trauung bis zum ganzen Hochzeitstag, immer mit zwei Fotografen –
+        und ergänzt es mit Zusatzstunden, Kennenlernshooting, After-Wedding-Shooting oder Hochzeitsbox.
+        Auch euer <strong>Couple Shooting</strong>, <strong>Family Shooting</strong> oder ein <strong>verstecktes Verlobungsshooting</strong> beim Heiratsantrag stellt ihr hier selbst zusammen.
+        Die Fahrspesen ab Altenrhein rechnen wir gleich mit.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        <strong>Wichtig:</strong> Der angezeigte Betrag ist ein <strong>unverbindlicher Richtpreis</strong>.
+        Eure genaue Offerte erhaltet ihr nach dem <strong>kostenlosen Erstgespräch</strong>, in dem wir eure Wünsche und den Ablauf eures Tages gemeinsam besprechen.
+      </p>
+      <p class="mt-4 font-medium text-gray-800">Habt ihr Fragen? Meldet euch unbedingt bei uns – über das Kontaktformular oder direkt per WhatsApp.</p>
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        <a href="kontakt.html" class="inline-flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">
+          <img src="/assets/icons/mail.svg" width="20" height="20" alt="" /> Kontaktformular
+        </a>
+        <a href="https://wa.me/41797511754?text=Hallo%20J%C3%A9r%C3%B4me%2C%20ich%20habe%20eine%20Frage%20zur%20Offerte." target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+          <img src="/assets/icons/whatsapp.svg" width="20" height="20" alt="" /> WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main id="offer-main" class="py-12 px-4 md:px-6" style="background-color:#fdfaf6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+      <div class="no-print lg:col-span-2 space-y-8 min-w-0">
+        <section class="card bg-white rounded-2xl p-6">
+          <span class="step-pill">Schritt 1</span>
+          <h2 id="package-title" class="mt-3 mb-4 text-2xl font-bold"></h2>
+          <div id="packages"></div>
+          <div id="upgrade" class="hidden mt-4 flex flex-wrap items-center gap-3 p-4 rounded-xl border border-gray-800" style="background-color:#fdfaf6">
+            <p id="upgrade-text" class="flex-1 font-medium" style="min-width:14rem"></p>
+            <button type="button" id="upgrade-button" class="bg-gray-800 text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-700 transition"></button>
+          </div>
+        </section>
+
+        <section class="card bg-white rounded-2xl p-6">
+          <span class="step-pill">Schritt 2</span>
+          <h2 class="mt-3 mb-4 text-2xl font-bold">Extras nach Wunsch</h2>
+          <div id="options" class="space-y-3"></div>
+        </section>
+
+        <section class="card bg-white rounded-2xl p-6">
+          <span class="step-pill">Schritt 3</span>
+          <h2 class="mt-3 mb-4 text-2xl font-bold">Ort & Details</h2>
+          <div>
+            <label class="label" for="place">Wo soll es stattfinden?</label>
+            <input id="place" list="place-list" type="text" maxlength="100" autocomplete="off" class="field" placeholder="PLZ oder Ort, z. B. 8001 Zürich">
+            <datalist id="place-list"></datalist>
+            <p id="place-result" class="mt-2 text-sm text-gray-700" aria-live="polite"></p>
+            <p class="mt-1 text-xs text-gray-500">Die Kilometer sind geschätzt. Den genauen Betrag bestätige ich in der Offerte. Ortsdaten: <a class="hover:underline" href="https://www.geonames.org" target="_blank" rel="noopener">GeoNames</a> (CC BY 4.0).</p>
+          </div>
+          <div id="details" class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+          <div id="moments" class="mt-5"></div>
+        </section>
+
+        <section id="anfrage" class="card bg-white rounded-2xl p-6">
+          <span class="step-pill">Schritt 4</span>
+          <h2 class="mt-3 mb-1 text-2xl font-bold">Offerte anfragen</h2>
+          <p class="text-gray-600 mb-6">Ich prüfe, ob ich an eurem Datum frei bin, und melde mich in der Regel innerhalb von 24 Stunden.</p>
+
+          <form id="offer-form" action="/api/contact" method="POST" accept-charset="UTF-8" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Bots fill in this hidden field; such messages are dropped. -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <!-- Filled in from the configuration when the form is sent. -->
+            <input type="hidden" name="package" id="form-package">
+            <input type="hidden" name="intent" value="Offerte erhalten">
+            <input type="hidden" name="subject" id="form-subject">
+            <input type="hidden" name="message" id="form-message">
+
+            <div>
+              <label class="label req" for="firstname">Vorname</label>
+              <input id="firstname" name="firstname" type="text" required maxlength="200" autocomplete="given-name" class="field" placeholder="Vorname">
+            </div>
+            <div>
+              <label class="label req" for="lastname">Nachname</label>
+              <input id="lastname" name="lastname" type="text" required maxlength="200" autocomplete="family-name" class="field" placeholder="Nachname">
+            </div>
+            <!-- Partner/in: nur bei Hochzeit und Couple Shooting sichtbar (offerte.js) -->
+            <div id="partner-fields" class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="label" for="partner_firstname">Vorname Partner/in (optional)</label>
+                <input id="partner_firstname" name="partner_firstname" type="text" maxlength="200" autocomplete="off" class="field" placeholder="Vorname">
+              </div>
+              <div>
+                <label class="label" for="partner_lastname">Nachname Partner/in (optional)</label>
+                <input id="partner_lastname" name="partner_lastname" type="text" maxlength="200" autocomplete="off" class="field" placeholder="Nachname">
+              </div>
+            </div>
+            <div>
+              <label class="label req" for="email">E-Mail</label>
+              <input id="email" name="email" type="email" required maxlength="320" autocomplete="email" class="field" placeholder="name@mail.ch">
+            </div>
+            <div>
+              <label class="label req" for="phone">Telefon</label>
+              <input id="phone" name="phone" type="tel" required maxlength="100" autocomplete="tel" class="field" placeholder="+41 79 123 45 67">
+            </div>
+            <div class="md:col-span-2">
+              <label class="label" for="note">Nachricht (optional)</label>
+              <textarea id="note" rows="4" maxlength="5000" class="field" placeholder="Erzählt mir kurz von eurem Tag …"></textarea>
+            </div>
+            <div class="md:col-span-2 flex items-start gap-3 text-sm text-gray-600">
+              <input id="privacy" name="privacy" type="checkbox" required class="mt-1">
+              <label for="privacy">Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert und verarbeitet werden (<a class="text-blue-600 hover:underline" href="Datenschutzerklärung.html">Datenschutz</a>).</label>
+            </div>
+            <div class="md:col-span-2">
+              <button type="submit" class="w-full md:w-auto bg-gray-800 text-white px-8 py-3 rounded-full font-semibold shadow-md hover:bg-gray-700 transition">Offerte anfragen</button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <aside id="summary" class="card bg-white rounded-2xl p-6 lg:sticky">
+        <span class="step-pill no-print">Eure Auswahl</span>
+        <h2 id="summary-kind" class="mt-3 text-2xl font-bold"></h2>
+        <ul id="summary-items" class="mt-4 space-y-2 text-gray-700"></ul>
+        <div class="border-t border-gray-300 my-4"></div>
+        <p class="text-sm text-gray-600">Richtpreis</p>
+        <p id="summary-total" class="text-3xl font-bold text-gray-800"></p>
+        <p id="summary-open" class="text-sm text-gray-600"></p>
+        <p class="mt-3 text-xs text-gray-500">Unverbindlicher Richtpreis in CHF. Eure genaue Offerte erhaltet ihr nach dem kostenlosen Erstgespräch.</p>
+        <a href="https://wa.me/41797511754?text=Hallo%20J%C3%A9r%C3%B4me%2C%20ich%20habe%20eine%20Frage%20zur%20Offerte." target="_blank" rel="noopener" class="no-print mt-3 inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:underline">
+          <img src="/assets/icons/whatsapp.svg" width="18" height="18" alt="" class="bg-green-500 rounded-full p-0.5" /> Fragen? Schreibt uns auf WhatsApp
+        </a>
+
+        <div class="no-print mt-5 flex flex-col gap-2">
+          <a href="#anfrage" class="text-center bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">Offerte anfragen</a>
+          <div class="flex gap-2">
+            <button type="button" id="print-button" class="flex-1 border border-gray-300 text-gray-800 px-3 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition">Als PDF speichern</button>
+            <button type="button" id="share-button" class="flex-1 border border-gray-300 text-gray-800 px-3 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition">Link kopieren</button>
+          </div>
+        </div>
+
+        <details class="mt-5 text-sm text-gray-700" open>
+          <summary class="cursor-pointer font-semibold">Im Paket enthalten</summary>
+          <ul id="summary-includes" class="mt-2 space-y-1"></ul>
+        </details>
+        <div id="summary-details-wrap" class="hidden mt-4 text-sm text-gray-700">
+          <p class="font-semibold mb-1">Eure Angaben</p>
+          <ul id="summary-details" class="space-y-1 break-words"></ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Small screens: the total stays visible while scrolling through the options. -->
+  <div class="no-print lg:hidden fixed bottom-0 inset-x-0 z-30 bg-gray-800 text-white px-4 py-3 flex items-center justify-between gap-3 shadow-lg">
+    <span id="mobile-total" class="font-bold"></span>
+    <a href="#summary" class="bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">Übersicht</a>
+  </div>
+
+  <footer class="no-print bg-gray-800 text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="space-y-4">
+        <picture><source type="image/avif" srcset="/assets/img/logo-neu-96.avif 96w, /assets/img/logo-neu-192.avif 192w, /assets/img/logo-neu-288.avif 288w" sizes="64px"><source type="image/webp" srcset="/assets/img/logo-neu-96.webp 96w, /assets/img/logo-neu-192.webp 192w, /assets/img/logo-neu-288.webp 288w" sizes="64px"><img src="/assets/img/logo-neu-192.png" alt="Kesslershots Logo" class="h-16 w-auto" width="1024" height="1024" decoding="async" loading="lazy"></picture>
+        <p class="text-sm text-gray-400">Eure Erinnerungen. Stilvoll verewigt.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="index.html#preise" class="hover:text-white">Preise</a></li>
+          <li><a href="offerte.html" class="hover:text-white">Offerte zusammenstellen</a></li>
+          <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
+          <li><a href="Datenschutzerklärung.html" class="hover:text-white">Datenschutz</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="mailto:info@kesslershots.ch" class="hover:text-white">E-Mail schreiben</a></li>
+          <li><a href="https://wa.me/41797511754" target="_blank" rel="noopener" class="hover:text-white">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-10">&copy; 2026 Kesslershots. Alle Rechte vorbehalten.</div>
+  </footer>
+
+  <script src="/assets/offerte.js"></script>
+</body>
+</html>

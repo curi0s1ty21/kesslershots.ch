@@ -42,11 +42,11 @@
             ];
             root = site;
             # Behind SWAG, an absolute redirect would expose the internal port.
-            # Compression: the stylesheet is 2.9 MB uncompressed.
+            # Compression: the stylesheet is 2.9 MB uncompressed, the place list 170 kB.
             extraConfig = ''
               absolute_redirect off;
               gzip on;
-              gzip_types text/css image/svg+xml;
+              gzip_types text/css image/svg+xml application/json application/javascript;
             '';
             locations."= /api/contact" = {
               proxyPass = "http://127.0.0.1:${toString cfg.contactPort}";

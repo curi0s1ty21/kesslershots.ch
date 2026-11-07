@@ -31,6 +31,12 @@ To add an image, put it in `site/`, reference it with a normal `<img>`, and run 
 
 Images are never enlarged. For large high-resolution screens, use originals of at least 2560 pixels wide.
 
+## Offer configurator
+
+`site/offerte.html` lets couples put together their own offer. All prices and rules are in `OFFER` at the top of `site/assets/offerte.js`. Requests go to the contact form's address, so they are saved and sent to Telegram like any other message.
+
+Driving costs are estimated in the browser: the straight line from Altenrhein to the place in `site/assets/plz.json`, times `roadFactor`. No map service is involved.
+
 ## Contact form
 
 The form posts to `/api/contact`, handled by `server/contact_server.py`. It saves each message, then sends it to Telegram if a bot is configured.
@@ -82,3 +88,4 @@ Plugin code is in `modules/`. See [AGENTS.md](AGENTS.md).
 | `site/assets/vendor/tailwind-2.2.19.min.css` | [Tailwind CSS](https://tailwindcss.com) | MIT |
 | `site/assets/fonts/` | [Dosis](https://github.com/googlefonts/dosis-vf) | SIL OFL 1.1 (`OFL.txt`) |
 | `site/assets/icons/` | [Font Awesome Free](https://fontawesome.com) | CC BY 4.0 |
+| `site/assets/plz.json` | [GeoNames](https://www.geonames.org) postal codes (CH, LI), reduced | CC BY 4.0 |

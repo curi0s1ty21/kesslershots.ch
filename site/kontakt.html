@@ -6,6 +6,7 @@
   <title>Kontakt | Kesslershots – Hochzeitsfotografie Ostschweiz</title>
   <link href="/assets/vendor/tailwind-2.2.19.min.css" rel="stylesheet">
   <link href="/assets/site.css" rel="stylesheet">
+  <script src="/assets/motion.js" defer></script>
   <meta name="description" content="Kontakt zu Kesslershots: Hochzeitsfotografie in St. Gallen, Rheintal, Appenzell & Ostschweiz. Strenglenstrasse 3, 9424 Rheineck. Jetzt Termin anfragen!" />
   <link rel="icon" type="image/png" href="/Logo.jpg" sizes="32x32">
   <style>
@@ -52,6 +53,7 @@
       <a href="index.html" class="hover:text-gray-300">Home</a>
       <a href="index.html#testimonials" class="hover:text-gray-300">Referenzen</a>
       <a href="index.html#preise" class="hover:text-gray-300">Preise</a>
+      <a href="offerte.html" class="hover:text-gray-300">Offerte zusammenstellen</a>
       <a href="index.html#about" class="hover:text-gray-300">Ueber uns</a>
       <a href="index.html#portfolio" class="hover:text-gray-300">Portfolio</a>
       <a href="kontakt.html" class="hover:text-gray-300">Kontakt</a>
@@ -95,14 +97,24 @@
           <input id="lastname" name="lastname" type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-800" placeholder="Nachname" />
         </div>
 
+        <!-- Partner/in: vor allem bei Hochzeiten -->
+        <div>
+          <label class="label" for="partner_firstname">Vorname Partner/in (optional)</label>
+          <input id="partner_firstname" name="partner_firstname" type="text" maxlength="200" autocomplete="off" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-800" placeholder="Vorname" />
+        </div>
+        <div>
+          <label class="label" for="partner_lastname">Nachname Partner/in (optional)</label>
+          <input id="partner_lastname" name="partner_lastname" type="text" maxlength="200" autocomplete="off" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-800" placeholder="Nachname" />
+        </div>
+
         <!-- E-Mail / Telefon -->
         <div>
           <label class="label req" for="email">E-Mail</label>
           <input id="email" name="email" type="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-800" placeholder="name@mail.ch" />
         </div>
         <div>
-          <label class="label" for="phone">Telefon (optional)</label>
-          <input id="phone" name="phone" type="tel" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-800" placeholder="+41 ..." />
+          <label class="label req" for="phone">Telefon</label>
+          <input id="phone" name="phone" type="tel" required maxlength="100" autocomplete="tel" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-800" placeholder="+41 79 123 45 67" />
         </div>
 
         <!-- Titel / Paket -->
@@ -118,6 +130,9 @@
             <option>Mini-Paket</option>
             <option>Bestseller</option>
             <option>Rundum-Sorglos</option>
+            <option>Couple Shooting</option>
+            <option>Family Shooting</option>
+            <option>Verstecktes Verlobungsshooting</option>
             <option>Noch offen / Beratung</option>
           </select>
         </div>
@@ -166,6 +181,7 @@
           <li><a href="index.html" class="hover:text-white">Home</a></li>
           <li><a href="index.html#testimonials" class="hover:text-white">Referenzen</a></li>
           <li><a href="index.html#preise" class="hover:text-white">Preise</a></li>
+          <li><a href="offerte.html" class="hover:text-white">Offerte zusammenstellen</a></li>
           <li><a href="index.html#about" class="hover:text-white">Ueber uns</a></li>
           <li><a href="index.html#portfolio" class="hover:text-white">Portfolio</a></li>
           <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
@@ -181,7 +197,7 @@
         </ul>
       </div>
     </div>
-    <div class="text-center text-gray-500 text-sm mt-10">&copy; 2025 Kesslershots. Alle Rechte vorbehalten.</div>
+    <div class="text-center text-gray-500 text-sm mt-10">&copy; 2026 Kesslershots. Alle Rechte vorbehalten.</div>
   </footer>
 </body>
 </html>

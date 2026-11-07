@@ -20,20 +20,381 @@ picture {
   display: contents;
 }
 
-/* Background of the pricing section, sized to the screen. */
-#preise {
+/* Background of the pricing section and the offer page, sized to the screen. */
+#preise, #offerte-hero {
   background-image: url(/Bruecke.jpeg);
   background-image: image-set(url(/assets/img/bruecke-960.avif) type("image/avif"), url(/assets/img/bruecke-960.webp) type("image/webp"), url(/Bruecke.jpeg) type("image/jpeg"));
 }
 @media (min-width: 768px) {
-  #preise {
+  #preise, #offerte-hero {
     background-image: url(/Bruecke.jpeg);
   background-image: image-set(url(/assets/img/bruecke-1280.avif) type("image/avif"), url(/assets/img/bruecke-1280.webp) type("image/webp"), url(/Bruecke.jpeg) type("image/jpeg"));
   }
 }
 @media (min-width: 1280px) {
-  #preise {
+  #preise, #offerte-hero {
     background-image: url(/Bruecke.jpeg);
   background-image: image-set(url(/assets/img/bruecke-1600.avif) type("image/avif"), url(/assets/img/bruecke-1600.webp) type("image/webp"), url(/Bruecke.jpeg) type("image/jpeg"));
   }
+}
+
+/* Testimonial-Slider (index.html) */
+.testimonial-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0.5rem 0.25rem 1.25rem;
+  scrollbar-width: none;
+}
+.testimonial-track::-webkit-scrollbar { display: none; }
+.testimonial-card {
+  flex: 0 0 85%;
+  scroll-snap-align: center;
+}
+@media (min-width: 768px) {
+  .testimonial-card { flex-basis: calc((100% - 2.5rem) / 3); scroll-snap-align: start; }
+}
+.testimonial-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: -1.25rem;
+  border-radius: 9999px;
+  background: #fff;
+  color: #1f2937;
+  font-size: 1.5rem;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.testimonial-nav[hidden] { display: none; }
+.testimonial-prev { left: -0.75rem; }
+.testimonial-next { right: -0.75rem; }
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-track { scroll-behavior: auto; }
+}
+
+#partner-fields[hidden] { display: none; }
+
+/* --- Animationen (assets/motion.js) ---------------------------------------
+   "translate" und "scale" statt "transform", damit Tailwinds hover:scale-105 weiter wirkt. */
+html { scroll-behavior: smooth; }
+.js-motion .mx-reveal {
+  opacity: 0;
+  translate: 0 28px;
+  /* transform und box-shadow: die Hover-Effekte von Tailwind bleiben weich. */
+  transition: opacity 0.7s ease, translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.3s ease, box-shadow 0.3s ease;
+}
+.js-motion .mx-reveal.mx-in { opacity: 1; translate: 0 0; }
+.js-motion .mx-unveil {
+  opacity: 0;
+  scale: 1.08;
+  filter: blur(6px);
+  transition: opacity 1s ease, scale 1.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 1s ease, transform 0.5s ease;
+}
+.js-motion .mx-unveil.mx-in { opacity: 1; scale: 1; filter: none; }
+
+/* Fortschrittsbalken oben */
+.mx-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 60;
+  background: linear-gradient(90deg, #c8a97e, #1f2937);
+  transform-origin: left;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* Portfolio: Zoom beim Darüberfahren, Klick öffnet die Galerie */
+.mx-zoomable { position: relative; cursor: zoom-in; }
+.mx-zoomable img { transition: scale 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 1s ease, filter 1s ease; }
+.mx-zoomable:hover img, .mx-zoomable:focus-visible img { scale: 1.07; }
+.mx-zoomable::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.35), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.mx-zoomable:hover::after, .mx-zoomable:focus-visible::after { opacity: 1; }
+.mx-zoomable:focus-visible { outline: 3px solid #c8a97e; outline-offset: 3px; }
+
+.mx-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.92);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.mx-lightbox[hidden] { display: none; }
+.mx-lightbox.is-open { opacity: 1; }
+.mx-lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 3.5rem 1rem; }
+.mx-lb-stage picture { display: contents; }
+.mx-lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: mx-pop 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes mx-pop { from { opacity: 0; scale: 0.96; } to { opacity: 1; scale: 1; } }
+.mx-lightbox button {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+.mx-lightbox button:hover { background: rgba(255, 255, 255, 0.25); }
+.mx-lb-close { top: 1rem; right: 1rem; }
+.mx-lb-prev { left: 1rem; top: 50%; margin-top: -1.5rem; }
+.mx-lb-next { right: 1rem; top: 50%; margin-top: -1.5rem; }
+.mx-lb-count { position: absolute; bottom: 1rem; left: 0; right: 0; text-align: center; color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; }
+@media (max-width: 640px) { .mx-lb-prev, .mx-lb-next { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js-motion .mx-reveal, .js-motion .mx-unveil { opacity: 1; translate: none; scale: none; filter: none; transition: none; }
+  .mx-zoomable img, .mx-lb-img { transition: none; animation: none; }
+}
+
+/* --- Online-Galerie: animierte Vorschau (index.html #leistungen) --- */
+.gal-demo {
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  rotate: -1.5deg;
+  transition: rotate 0.6s ease;
+}
+.gal-demo:hover { rotate: 0deg; }
+.gal-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #f3f4f6; }
+.gal-bar span { width: 10px; height: 10px; border-radius: 9999px; background: #d1d5db; }
+.gal-bar p { margin-left: 10px; font-size: 0.8rem; color: #6b7280; }
+.gal-screen { height: 460px; display: flex; flex-direction: column; }
+.gal-cover { position: relative; height: 170px; flex: none; overflow: hidden; }
+.gal-cover img { animation: gal-kenburns 14s ease-in-out infinite alternate; }
+.gal-cover-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.gal-title { font-size: 1.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.gal-sub { font-size: 0.85rem; letter-spacing: 0.2em; opacity: 0.9; }
+.gal-toolbar { display: flex; gap: 1rem; padding: 10px 14px; font-size: 0.8rem; color: #374151; border-bottom: 1px solid #e5e7eb; flex: none; }
+.gal-dl { margin-left: auto; background: #1f2937; color: #fff; padding: 2px 10px; border-radius: 9999px; animation: gal-pulse 3s ease-in-out infinite; }
+.gal-scroll { flex: 1; overflow: hidden; padding: 8px; }
+.gal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; animation: gal-scroll 26s linear infinite; }
+.gal-demo:hover .gal-grid { animation-play-state: paused; }
+.gal-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 6px; }
+.gal-heart { position: absolute; right: 6px; bottom: 4px; color: #fff; font-size: 1rem; opacity: 0; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
+.gal-tile.is-fav .gal-heart { color: #f43f5e; animation: gal-heart 4s ease-in-out infinite; }
+@keyframes gal-scroll { from { translate: 0 0; } to { translate: 0 calc(-50% - 4px); } }
+@keyframes gal-kenburns { from { scale: 1; } to { scale: 1.12; } }
+@keyframes gal-pulse { 0%, 100% { scale: 1; } 50% { scale: 1.08; } }
+@keyframes gal-heart { 0%, 30% { opacity: 0; scale: 0.4; } 45% { opacity: 1; scale: 1.3; } 60%, 100% { opacity: 1; scale: 1; } }
+@media (max-width: 640px) { .gal-screen { height: 380px; } .gal-demo { rotate: 0deg; } }
+@media (prefers-reduced-motion: reduce) {
+  .gal-grid, .gal-cover img, .gal-dl, .gal-tile.is-fav .gal-heart { animation: none; }
+  .gal-tile.is-fav .gal-heart { opacity: 1; }
+  .gal-demo { rotate: 0deg; transition: none; }
+}
+
+/* --- Instagram: Smartphone mit echtem Profil-Feed (index.html #instagram, assets/instagram.js) --- */
+.ig-phone {
+  position: relative;
+  width: 300px;
+  height: 620px;
+  padding: 11px;
+  border-radius: 54px;
+  /* Titan-Rahmen */
+  background: linear-gradient(140deg, #8d8f94 0%, #3b3d42 18%, #1b1c1f 50%, #3b3d42 82%, #8d8f94 100%);
+  box-shadow:
+    0 60px 100px -30px rgba(0, 0, 0, 0.55),
+    0 30px 50px -30px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.25),
+    inset 0 0 0 7px #0b0c0e;
+}
+/* Seitentasten */
+.ig-phone::before, .ig-phone::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2a2b2f, #6b6d72);
+}
+.ig-phone::before { left: -3px; top: 130px; height: 60px; box-shadow: 0 80px 0 #3b3d42; }
+.ig-phone::after { right: -3px; top: 170px; height: 90px; }
+.ig-screen { position: relative; height: 100%; overflow: hidden; border-radius: 44px; background: #fff; isolation: isolate; }
+/* Statusleiste mit Dynamic Island */
+.ig-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px 0 30px;
+  font: 600 13px/1 -apple-system, "Segoe UI", sans-serif;
+  color: #111;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+}
+.ig-island { position: absolute; top: 11px; left: 50%; width: 96px; height: 28px; margin-left: -48px; border-radius: 9999px; background: #000; }
+.ig-icons { display: flex; gap: 5px; align-items: center; }
+.ig-icons i { display: block; background: #111; border-radius: 2px; }
+.ig-icons .sig { width: 15px; height: 9px; clip-path: polygon(0 100%, 100% 0, 100% 100%); }
+.ig-icons .bat { width: 22px; height: 10px; border-radius: 3px; box-shadow: inset 0 0 0 1.5px #111; background: linear-gradient(90deg, #111 70%, transparent 70%); }
+.ig-home { position: absolute; bottom: 8px; left: 50%; width: 110px; height: 4px; margin-left: -55px; border-radius: 9999px; background: rgba(0, 0, 0, 0.75); z-index: 5; }
+/* Glanz auf dem Glas */
+.ig-glare { position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: 44px; background: linear-gradient(115deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 38%); }
+/* Der Feed: höher als der Bildschirm, wird von instagram.js langsam nach oben geschoben */
+.ig-avatar { display: inline-block; width: 72px; height: 72px; border-radius: 9999px; padding: 3px; background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6); }
+.ig-avatar img { width: 100%; height: 100%; border-radius: 9999px; border: 3px solid #fff; background: #fff; object-fit: contain; }
+.ig-button { background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6); }
+.ig-hint { margin-top: 14px; text-align: center; font-size: 0.8rem; color: #6b7280; }
+/* Weiches Schweben des Geräts */
+@keyframes ig-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.ig-float { animation: ig-float 7s ease-in-out infinite; }
+@media (max-width: 360px) { .ig-phone { width: 272px; height: 566px; } }
+@media (prefers-reduced-motion: reduce) { .ig-float { animation: none; } }
+
+/* --- Portfolio-Mosaik (index.html #portfolio): zwei grosse Kacheln, das Raster füllt sich lückenlos --- */
+.portfolio-mosaic { grid-auto-rows: 18rem; grid-auto-flow: row dense; }
+.portfolio-mosaic figure, .portfolio-mosaic picture { height: 100%; }
+.portfolio-mosaic img { height: 100%; }
+.portfolio-mosaic .mosaic-big { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 767px) { .portfolio-mosaic { grid-auto-rows: 11rem; } }
+
+/* Eigener Feed im Instagram-Look */
+.ig-screen { display: flex; flex-direction: column; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; color: #111; }
+.ig-status { position: relative; flex: none; }
+.igf-top { flex: none; display: flex; align-items: center; gap: 4px; padding: 6px 16px 8px; font-size: 15px; }
+.igf-chev { font-size: 12px; color: #444; }
+.igf-top-icons { margin-left: auto; letter-spacing: 10px; font-size: 16px; }
+.igf-scroll { flex: 1; overflow-y: auto; scrollbar-width: none; overscroll-behavior: contain; padding-bottom: 60px; }
+.igf-scroll::-webkit-scrollbar { display: none; }
+.igf-profile { display: flex; align-items: center; gap: 14px; padding: 4px 16px 8px; }
+.igf-avatar { width: 78px; height: 78px; flex: none; }
+.igf-name { font-weight: 700; font-size: 14px; }
+.igf-cat { font-size: 12px; color: #737373; }
+.igf-bio { padding: 0 16px; font-size: 12.5px; line-height: 1.45; }
+.igf-link { color: #00376b; font-weight: 600; }
+.igf-actions { display: flex; gap: 6px; padding: 10px 16px; }
+.igf-btn { flex: 1; text-align: center; padding: 6px 0; border-radius: 8px; background: #efefef; font-size: 12.5px; font-weight: 600; }
+.igf-follow { background: #0095f6; color: #fff; }
+.igf-highlights { display: flex; gap: 14px; padding: 4px 16px 12px; }
+.igf-hl { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 56px; }
+.igf-hl-ring { width: 56px; height: 56px; border-radius: 9999px; padding: 2px; box-shadow: 0 0 0 1px #dbdbdb; overflow: hidden; }
+.igf-hl-ring picture, .igf-hl-img { display: block; width: 100%; height: 100%; border-radius: 9999px; object-fit: cover; }
+.igf-hl-label { font-size: 10.5px; }
+.igf-tabs { display: flex; justify-content: space-around; border-top: 1px solid #efefef; font-size: 15px; color: #8e8e8e; }
+.igf-tabs span { flex: 1; text-align: center; padding: 8px 0; }
+.igf-tabs .is-active { color: #111; box-shadow: inset 0 -1.5px 0 #111; }
+.igf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.igf-tile { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #efefef; }
+.igf-tile picture, .igf-img { display: block; width: 100%; height: 100%; object-fit: cover; transition: scale 0.5s ease; }
+.igf-tile:hover .igf-img { scale: 1.06; }
+.igf-nav { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; display: flex; justify-content: space-around; align-items: center; padding: 8px 10px 22px; font-size: 19px; background: rgba(255, 255, 255, 0.96); border-top: 1px solid #efefef; }
+.igf-nav-me { width: 22px; height: 22px; border-radius: 9999px; background: url(/assets/img/logo-neu-192.png) center / cover; box-shadow: 0 0 0 1.5px #111; }
+
+/* --- Pixel-Animation im Leistungsumfang (index.html #leistungen) ---
+   14 s Schleife: 0–44 % Paar rennt nach rechts, Fotograf knipst hinterher.
+   46–50 % Wende. 50–96 % Fotograf flieht nach links, die Braut jagt ihn.
+   Die Beine wechseln zwischen zwei Pixel-Bildern (px-f1/px-f2), wie bei alten Videospielen. */
+.comic-strip { position: relative; height: 140px; margin: 2rem auto 0; max-width: 64rem; overflow: hidden; }
+.comic-actor { position: absolute; bottom: 10px; animation: 14s linear infinite; }
+.comic-couple { animation-name: comic-couple-x; }
+.comic-photographer { animation-name: comic-photo-x; }
+@keyframes comic-couple-x {
+  0% { left: -120px; }
+  44% { left: calc(100% - 130px); }
+  52% { left: calc(100% - 130px); }
+  96%, 100% { left: -120px; }
+}
+@keyframes comic-photo-x {
+  0% { left: -240px; }
+  44% { left: calc(100% - 230px); }
+  47%, 50% { left: calc(100% - 226px); }
+  86%, 100% { left: -90px; }
+}
+.comic-face { position: relative; display: flex; animation: 14s steps(1) infinite; }
+.comic-couple-face { animation-name: comic-turn-couple; }
+.comic-photo-face { animation-name: comic-turn-photo; }
+@keyframes comic-turn-couple { 0% { scale: 1 1; } 47%, 100% { scale: -1 1; } }
+@keyframes comic-turn-photo { 0% { scale: 1 1; translate: 0 0; } 46% { scale: -1 1; translate: 0 -16px; } 48%, 100% { scale: -1 1; translate: 0 0; } }
+.comic-bob { display: flex; align-items: flex-end; gap: 4px; animation: px-bob 0.3s steps(1) infinite; }
+@keyframes px-bob { 0% { translate: 0 0; } 50% { translate: 0 -4px; } }
+.px-fig { display: block; image-rendering: pixelated; }
+.px-f1 { animation: px-frame 0.3s steps(1) infinite; }
+.px-f2 { animation: px-frame 0.3s steps(1) infinite -0.15s; }
+@keyframes px-frame { 0% { opacity: 1; } 50% { opacity: 0; } }
+.px-shadow { position: absolute; left: 8px; right: 8px; bottom: -6px; height: 4px; background: #1f2937; opacity: 0.12; }
+/* Tempo-Striche hinter den Läufern */
+.comic-speed { position: absolute; right: 100%; top: 45%; width: 28px; height: 20px; margin-right: 2px;
+  background: repeating-linear-gradient(#1f2937 0 4px, transparent 4px 8px); opacity: 0.25;
+  -webkit-mask: linear-gradient(90deg, transparent, #000); mask: linear-gradient(90deg, transparent, #000); }
+/* Blitz der Kamera */
+.px-flash { position: absolute; left: 44px; top: -8px; opacity: 0; animation: comic-flash 14s steps(1) infinite; }
+@keyframes comic-flash {
+  0% { opacity: 0; } 12% { opacity: 1; } 14% { opacity: 0; } 20% { opacity: 1; } 22% { opacity: 0; }
+  29% { opacity: 1; } 31% { opacity: 0; } 38% { opacity: 1; } 40%, 100% { opacity: 0; }
+}
+/* Sprechblasen im Pixel-Stil: eckig, harter Schatten, Blockschrift */
+.comic-bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  z-index: 2;
+  padding: 3px 8px;
+  border: 4px solid #1f2937;
+  background: #fff;
+  box-shadow: 4px 4px 0 #1f2937;
+  font: 900 0.8rem/1.2 ui-monospace, "Courier New", monospace;
+  letter-spacing: 0.08em;
+  color: #1f2937;
+  white-space: nowrap;
+  opacity: 0;
+  animation: 14s steps(1) infinite;
+}
+.comic-klick { left: 30px; background: #fde68a; animation-name: comic-klick; }
+.comic-oops { left: 8px; background: #fecaca; animation-name: comic-oops; }
+.comic-hey { left: 4px; background: #fbcfe8; animation-name: comic-hey; }
+@keyframes comic-klick { 0% { opacity: 0; } 13% { opacity: 1; } 18% { opacity: 0; } 30% { opacity: 1; } 35%, 100% { opacity: 0; } }
+@keyframes comic-oops { 0% { opacity: 0; } 46% { opacity: 1; } 57%, 100% { opacity: 0; } }
+@keyframes comic-hey { 0% { opacity: 0; } 46% { opacity: 1; } 61%, 100% { opacity: 0; } }
+@media (max-width: 640px) { .comic-strip { height: 120px; } .comic-bob { scale: 0.8; transform-origin: bottom; } }
+@media (prefers-reduced-motion: reduce) {
+  .comic-actor, .comic-face, .comic-bob, .px-f1, .px-f2, .px-flash, .comic-bubble { animation: none; }
+  .px-f2 { opacity: 0; }
+  .comic-couple { left: 55%; }
+  .comic-photographer { left: 20%; }
+  .comic-klick { opacity: 1; }
 }

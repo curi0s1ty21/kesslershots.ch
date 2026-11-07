@@ -30,8 +30,10 @@ MAX_BODY = 64 * 1024
 FIELDS = {
     "firstname": ("Vorname", 200, True),
     "lastname": ("Nachname", 200, True),
+    "partner_firstname": ("Vorname Partner/in", 200, False),
+    "partner_lastname": ("Nachname Partner/in", 200, False),
     "email": ("E-Mail", 320, True),
-    "phone": ("Telefon", 100, False),
+    "phone": ("Telefon", 100, True),
     "subject": ("Titel", 300, False),
     "package": ("Paket", 100, True),
     "intent": ("Anliegen", 100, True),

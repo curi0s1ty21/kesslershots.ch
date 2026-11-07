@@ -3,6 +3,13 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# Local settings such as the Telegram bot token. Ignored by git.
+if [ -f .env ]; then
+  set -a
+  . ./.env
+  set +a
+fi
+
 case "${1:-help}" in
   serve)
     shift

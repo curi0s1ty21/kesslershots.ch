@@ -35,11 +35,15 @@ def sizes_for(tag):
         (r"\bh-24\b", "96px"),
         (r"\bh-20\b", "80px"),
         (r"\bh-16\b", "64px"),
+        (r"\bgal-tile-img\b", "(min-width: 1024px) 180px, 30vw"),
+        (r"\bigf-img\b", "100px"),
+        (r"\bigf-hl-img\b", "56px"),
+        (r"\bgal-cover-img\b", "(min-width: 1024px) 560px, 100vw"),
         (r"\bh-72\b", "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"),
         (r"\bh-(44|48)\b", "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"),
         (r"\bh-auto\b", "(min-width: 1024px) 720px, 100vw"),
         (r"Hochzeit7", "(min-width: 1280px) 1248px, 100vw"),
-        (r"Hochzeit[13]\.|Couple1", "(min-width: 768px) 50vw, 100vw"),
+        (r"Hochzeit[13]\.|Brautpaar-See-Herbst|Braut-Fenster-Ruecken", "(min-width: 768px) 50vw, 100vw"),
         (r"Aline2", "(min-width: 1024px) 40vw, 100vw"),
     ]
     for pattern, sizes in rules:
@@ -169,9 +173,10 @@ def picture(page, tag, library):
     sizes = sizes_for(tag)
     new_src = info["fallback"] or "/" + file.relative_to(ROOT).as_posix()
     width, height = info["size"]
-    eager = re.search(r"\bh-(24|20)\b|Couple1", tag)
+    hero = "Brautpaar-See-Herbst" in tag and "max-h-[420px]" in tag
+    eager = re.search(r"\bh-(24|20)\b", tag) or hero
     attrs = f'width="{width}" height="{height}" decoding="async"'
-    attrs += ' fetchpriority="high"' if "Couple1" in tag else ""
+    attrs += ' fetchpriority="high"' if hero else ""
     attrs += "" if eager else ' loading="lazy"'
 
     img = tag.replace(f'src="{src}"', f'src="{new_src}"')
